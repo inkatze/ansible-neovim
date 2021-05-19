@@ -1,0 +1,28 @@
+---
+
+- name: Checking installed ruby interpreters
+  command: rbenv versions
+  register: ruby_versions
+  changed_when: false
+  when: neovim_ruby_version | string
+
+- name: Installing Ruby interpreter for neovim
+  command: rbenv install {{ neovim_ruby_version }}
+  when: neovim_ruby_version and not (neovim_ruby_version in ruby_versions.stdout)
+
+- name: Installing Ruby's neovim gems
+  gem:
+    name: "{{ item }}"
+    state: latest
+    user_install: no
+    executable: "{{ ansible_env.HOME }}/.rbenv/versions/{{ neovim_ruby_version }}/bin/gem"
+  environment:
+    RBENV_VERSION: "{{ neovim_ruby_version }}"
+  with_items:
+    - neovim
+    - solargraph
+    - bundler
+
+- name: Rehashing environments
+  command: rbenv rehash
+  changed_when: false

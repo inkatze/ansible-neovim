@@ -1,0 +1,27 @@
+---
+# defaults file for ansible-neovim
+
+neovim_formulas:
+  - neovim
+  # - ansible-lint
+  # - bat
+  # - CMake
+  # - findutils
+  # - gotags
+  # - proselint
+  # - pyenv
+  # - pyenv-virtualenv
+  # - rbenv
+  # - rg
+  # - rust-analyzer
+  # - rustup-init
+  # - watchman
+
+neovim_node_packages:
+  - { name: typescript-language-server, version: latest }
+  - { name: neovim, version: latest }
+  - { name: import-js, version: latest }
+  - { name: yaml-language-server, version: 0.4.1 }
+  - { name: vim-language-server, version: latest }
+
+neovim_config_path: nvim

@@ -1,0 +1,37 @@
+---
+
+- name: Checking Installed Python interpreters
+  command: pyenv versions
+  register: pyenv_versions
+  changed_when: false
+  when: "'pyenv' in neovim_formulas"
+
+- name: Storing pyenv root
+  command: pyenv root
+  register: pyenv_root
+  changed_when: false
+  when: "'pyenv' in neovim_formulas"
+
+- name: Installing Python interpreters for neovim
+  command: pyenv install {{ item.version }}
+  when: not (item.version in (pyenv_versions.stdout_lines | map('trim') | list))
+  with_items: "{{ neovim_python }}"
+
+- name: Creating neovim's Python virtualenvs
+  command: pyenv virtualenv {{ item.version }} {{ item.venv }}
+  when: not (item.venv in (pyenv_versions.stdout_lines | map('trim') | list))
+  with_items: "{{ neovim_python }}"
+
+- name: Installing Python neovim host clients
+  pip:
+    name:
+      - pynvim
+      - neovim
+      - msgpack
+    executable: "{{ pyenv_root.stdout }}/versions/{{ item.version }}/envs/{{ item.venv }}/bin/pip"
+    state: latest
+  with_items: "{{ neovim_python }}"
+
+- name: Rehashing environments
+  command: pyenv rehash
+  changed_when: false

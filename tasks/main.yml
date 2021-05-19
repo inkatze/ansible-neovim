@@ -1,0 +1,53 @@
+---
+
+- name: Installing neovim formulas
+  homebrew:
+    name: "{{ neovim_formulas }}"
+    state: present
+  when: neovim_formulas | list
+  tags:
+    - neovim
+
+- name: Adding universal-tags tap
+  homebrew_tap:
+    name: universal-ctags/universal-ctags
+    state: present
+  tags:
+    - neovim
+
+- name: Installing universal-ctags with json support
+  homebrew:
+    name: universal-ctags/universal-ctags/universal-ctags
+    install_options: 'with-jansson,HEAD'
+  tags:
+    - neovim
+
+- name: Installing vim-plug
+  git:
+    repo: https://github.com/junegunn/vim-plug.git
+    depth: "1"
+    force: yes
+    recursive: yes
+    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload"
+  tags:
+    - neovim
+
+- name: Installing neovim plugins
+  shell: nvim +'silent PlugUpdate --sync' +'silent UpdateRemotePlugins --sync' +qa &> /dev/null < /dev/tty
+  changed_when: false
+  tags:
+    - neovim
+
+- name: Updating neovim's configuration folder
+  copy:
+    src: "{{ neovim_config_path }}"
+    dest: "{{ ansible_env.HOME }}/.config"
+  when: neovim_config_path | string
+  tags:
+    - neovim
+
+- name: Updating neovim plugins
+  shell: nvim +'silent PlugUpdate --sync' +'silent UpdateRemotePlugins --sync' +qa &> /dev/null < /dev/tty
+  changed_when: false
+  tags:
+    - upgrade
