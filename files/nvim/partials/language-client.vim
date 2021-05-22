@@ -2,6 +2,8 @@
 set runtimepath+=$HOME/.local/share/nvim/site/pack/plugins/start/LanguageClient-neovim
 set hidden
 
+let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascript.jsx,sorbet'
+
 " bindings ->>1
 function  LanguageClientMappers()
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -20,23 +22,21 @@ endfunction
 
 augroup LSPMappings
   autocmd!
-  autocmd FileType \
-    \ cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascript.jsx,sorbet,vim
-    \ call LanguageClientMappers()
+  autocmd FileType enabledFileTypes call LanguageClientMappers()
 augroup END
 
 let g:LanguageClient_waitOutputFTimeout = 120
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {}
-let g:LanguageClient_serverCommands.yaml = ['yaml-language-server', '--stdio']
-let g:LanguageClient_serverCommands['yaml-ansible'] = ['yaml-language-server', '--stdio']
+let g:LanguageClient_serverCommands.yaml = ['npx', 'yaml-language-server', '--stdio']
+let g:LanguageClient_serverCommands['yaml-ansible'] = ['npx', 'yaml-language-server', '--stdio']
 let g:LanguageClient_serverCommands.ruby = ['solargraph', 'stdio']
-let g:LanguageClient_serverCommands.javascript = ['typescript-language-server', '--stdio']
-let g:LanguageClient_serverCommands.typescript = ['typescript-language-server', '--stdio']
-let g:LanguageClient_serverCommands['javascript.jsx'] = ['typescript-language-server', '--stdio']
-let g:LanguageClient_serverCommands.typescriptreact = ['typescript-language-server', '--stdio']
+let g:LanguageClient_serverCommands.javascript = ['npx', 'typescript-language-server', '--stdio']
+let g:LanguageClient_serverCommands.javascriptreact = ['npx', 'typescript-language-server', '--stdio']
+let g:LanguageClient_serverCommands.typescript = ['npx', 'typescript-language-server', '--stdio']
+let g:LanguageClient_serverCommands.typescriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.rust = ['rustup', 'run', 'stable', 'rls']
-let g:LanguageClient_serverCommands.vim = ['vim-language-server', '--stdio']
+let g:LanguageClient_serverCommands.vim = ['npx', 'vim-language-server', '--stdio']
 
 let lspsettings = json_decode('
 \{
@@ -110,7 +110,5 @@ endfunction()
 
 augroup LSP
   autocmd!
-  autocmd FileType \
-    \ cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascript.jsx,sorbet,vim
-    \ call InitializeLSP()
+  autocmd FileType enabledFileTypes call InitializeLSP()
 augroup END

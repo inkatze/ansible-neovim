@@ -10,7 +10,6 @@ Plug 'luochen1990/rainbow' " colored parenthesis
 Plug 'gregsexton/MatchTag' " highlight matching html tags
 Plug 'tpope/vim-fugitive' " Git commands wrapper
 Plug 'psliwka/vim-smoothie' " smooth scrolling
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'Yggdroot/indentLine' " shows indentation lines
 
 " ungrouped ->> 2
@@ -43,18 +42,15 @@ Plug 'Yggdroot/indentLine' " shows indentation lines
 " protobuf ->>2
 " Plug 'uarun/vim-protobuf'
 
-" everything else bagel ->>2
-" Plug 'autozimu/LanguageClient-neovim', {
-"   \ 'branch': 'next',
-"   \ 'do': 'bash install.sh',
-"   \ }
-
 " editing / qol ->>1
 Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-dispatch' " async task runner
 " Plug 'tpope/vim-endwise' " adds ending tokens for ruby
-
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
 
 " tmux
 " Plug 'tmux-plugins/vim-tmux'
