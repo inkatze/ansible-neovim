@@ -36,7 +36,6 @@ let g:LanguageClient_serverCommands.javascriptreact = ['npx', 'typescript-langua
 let g:LanguageClient_serverCommands.typescript = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.rust = ['rustup', 'run', 'stable', 'rls']
-let g:LanguageClient_serverCommands.vim = ['npx', 'vim-language-server', '--stdio']
 
 let lspsettings = json_decode('
 \{
@@ -82,14 +81,6 @@ let lspsettings = json_decode('
 \        "completion": true,
 \        "hover": true,
 \        "validate": true
-\    },
-\   "vim": {
-\        "completion": true,
-\        "hover": true,
-\        "validate": true,
-\        "format": {
-\            "enable": true
-\        }
 \    }
 \}')
 

@@ -11,6 +11,7 @@ Plug 'gregsexton/MatchTag' " highlight matching html tags
 Plug 'tpope/vim-fugitive' " Git commands wrapper
 Plug 'psliwka/vim-smoothie' " smooth scrolling
 Plug 'Yggdroot/indentLine' " shows indentation lines
+Plug 'ncm2/float-preview.nvim'
 
 " ungrouped ->> 2
 " Plug 'pearofducks/ansible-vim'
@@ -47,10 +48,10 @@ Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-dispatch' " async task runner
 " Plug 'tpope/vim-endwise' " adds ending tokens for ruby
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"   \ 'branch': 'next',
+"   \ 'do': 'bash install.sh',
+"   \ }
 
 " tmux
 " Plug 'tmux-plugins/vim-tmux'

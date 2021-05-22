@@ -27,5 +27,6 @@ runtime! partials/vim-projectionist.vim " project structure configuration
 
 let g:rainbow_active = 1
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.md, *.jsx, *.html.erb, *.tsx'
+let g:float_preview#docked = 0
 " Plug 'easymotion/vim-easymotion'
 " map <Leader>vm <Plug>(easymotion-prefix)
