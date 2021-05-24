@@ -32,12 +32,6 @@
   tags:
     - neovim
 
-- name: Installing neovim plugins
-  shell: nvim +'silent PlugUpdate --sync' +'silent UpdateRemotePlugins --sync' +qa &> /dev/null < /dev/tty
-  changed_when: false
-  tags:
-    - neovim
-
 - name: Updating neovim's configuration folder
   copy:
     src: "{{ neovim_config_path }}"
@@ -46,8 +40,14 @@
   tags:
     - neovim
 
+- name: Installing neovim plugins
+  shell: nvim -c '\n' -c 'silent PlugInstall' -c 'silent UpdateRemotePlugins' -c 'qa!' &> /dev/null < /dev/tty
+  changed_when: false
+  tags:
+    - neovim
+
 - name: Updating neovim plugins
-  shell: nvim +'silent PlugUpdate --sync' +'silent UpdateRemotePlugins --sync' +qa &> /dev/null < /dev/tty
+  shell: nvim -c '\n' -c 'silent PlugUpdate' -c 'silent UpdateRemotePlugins' -c 'qa!' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - upgrade

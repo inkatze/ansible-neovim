@@ -1,5 +1,8 @@
 call plug#begin(stdpath('data') . '/site')
 
+" completion ->>1
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " 1-offs
 Plug 'morhetz/gruvbox' " colorscheme
 Plug 'jiangmiao/auto-pairs' " auto-close pairs
@@ -10,32 +13,38 @@ Plug 'luochen1990/rainbow' " colored parenthesis
 Plug 'gregsexton/MatchTag' " highlight matching html tags
 Plug 'tpope/vim-fugitive' " Git commands wrapper
 Plug 'psliwka/vim-smoothie' " smooth scrolling
-Plug 'Yggdroot/indentLine' " shows indentation lines
 Plug 'ncm2/float-preview.nvim'
+" Plug 'easymotion/vim-easymotion'
 
 " ungrouped ->> 2
-" Plug 'pearofducks/ansible-vim'
-" Plug 'dag/vim-fish'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'pearofducks/ansible-vim'
+Plug 'dag/vim-fish'
 
 " javascripts ->>2
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'Galooshi/vim-import-js'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'Galooshi/vim-import-js'
 
 " ruby ->>2
-" Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise' " adds ending tokens for ruby
+Plug 'tpope/vim-rails'
+Plug 'etordera/deoplete-rails'
 " Plug 'tpope/vim-rake'
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-rbenv'
 " Plug 'thoughtbot/vim-rspec'
-" Plug 'vim-ruby/vim-ruby'
+
+" golang ->>2
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 
 " python ->>2
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " python highlighting
 " Plug 'tmhedberg/SimpylFold' " python folding
+" Plug 'deoplete-plugins/deoplete-jedi'
 
 " rust ->>2
 " Plug 'rust-lang/rust.vim'
@@ -44,10 +53,11 @@ Plug 'ncm2/float-preview.nvim'
 " Plug 'uarun/vim-protobuf'
 
 " editing / qol ->>1
+Plug 'Yggdroot/indentLine' " shows indentation lines
 Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
+" Plug 'Shougo/echodoc'
 " Plug 'tpope/vim-dispatch' " async task runner
-" Plug 'tpope/vim-endwise' " adds ending tokens for ruby
 " Plug 'autozimu/LanguageClient-neovim', {
 "   \ 'branch': 'next',
 "   \ 'do': 'bash install.sh',
@@ -71,14 +81,7 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'liuchengxu/vista.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" completion ->>1
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
-" Plug 'deoplete-plugins/deoplete-jedi'
-" Plug 'etordera/deoplete-rails'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } | Plug 'junegunn/fzf.vim'
 
 " status bars(s) ->>1
 Plug 'itchyny/lightline.vim' | Plug 'mengelbrecht/lightline-bufferline'
