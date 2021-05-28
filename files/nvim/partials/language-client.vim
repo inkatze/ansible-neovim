@@ -2,7 +2,7 @@
 set runtimepath+=$HOME/.local/share/nvim/site/pack/plugins/start/LanguageClient-neovim
 set hidden
 
-let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascript.jsx,sorbet'
+let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascriptreact,sorbet,vim,help'
 
 " bindings ->>1
 function  LanguageClientMappers()
@@ -25,17 +25,20 @@ augroup LSPMappings
   autocmd FileType enabledFileTypes call LanguageClientMappers()
 augroup END
 
+let g:LanguageClient_loggingFile = '/tmp/lsp.log'
 let g:LanguageClient_waitOutputFTimeout = 120
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {}
 let g:LanguageClient_serverCommands.yaml = ['npx', 'yaml-language-server', '--stdio']
-let g:LanguageClient_serverCommands['yaml-ansible'] = ['npx', 'yaml-language-server', '--stdio']
-let g:LanguageClient_serverCommands.ruby = ['solargraph', 'stdio']
+let g:LanguageClient_serverCommands['yaml.ansible'] = ['npx', 'yaml-language-server', '--stdio']
+let g:LanguageClient_serverCommands.ruby = ['srb', 'tc', '--lsp', '--disable-watchman']
 let g:LanguageClient_serverCommands.javascript = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.javascriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescript = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.rust = ['rustup', 'run', 'stable', 'rls']
+let g:LanguageClient_serverCommands.vim = ['npx', 'vim-language-server', '--stdio']
+let g:LanguageClient_serverCommands.help = ['npx', 'vim-language-server', '--stdio']
 
 let lspsettings = json_decode('
 \{
@@ -46,6 +49,21 @@ let lspsettings = json_decode('
 \        "schemas": {
 \            "Kubernetes": "/*"
 \        }
+\    },
+\    "yaml.ansible": {
+\        "completion": true,
+\        "hover": true,
+\        "validate": true
+\    },
+\    "vim": {
+\        "completion": true,
+\        "hover": true,
+\        "validate": true
+\    },
+\    "help": {
+\        "completion": true,
+\        "hover": true,
+\        "validate": true
 \    },
 \    "http": {
 \        "proxyStrictSSL": true
@@ -72,7 +90,7 @@ let lspsettings = json_decode('
 \        "hover": true,
 \        "validate": true
 \    },
-\   "javascript.jsx": {
+\   "javascriptreact": {
 \        "completion": true,
 \        "hover": true,
 \        "validate": true
@@ -90,7 +108,7 @@ function InitializeLSP()
   let g:LanguageClient_rootMarkers = {
   \   'javascript': ['jsconfig.json',  'package.json'],
   \   'typescript': ['tsconfig.json', 'package.json'],
-  \   'javascript.jsx': ['jsconfig.json', 'package.json'],
+  \   'javascriptreact': ['jsconfig.json', 'package.json'],
   \   'typescriptreact': ['tsconfig.json', 'package.json'],
   \   'vim': ['.git', 'autoload', 'plugin'],
   \   'ruby': ['Gemfile', 'package.yml']

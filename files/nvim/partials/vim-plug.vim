@@ -13,7 +13,7 @@ Plug 'luochen1990/rainbow' " colored parenthesis
 Plug 'gregsexton/MatchTag' " highlight matching html tags
 Plug 'tpope/vim-fugitive' " Git commands wrapper
 Plug 'psliwka/vim-smoothie' " smooth scrolling
-Plug 'ncm2/float-preview.nvim'
+" Plug 'ncm2/float-preview.nvim'
 " Plug 'easymotion/vim-easymotion'
 
 " ungrouped ->> 2
@@ -31,11 +31,11 @@ Plug 'Galooshi/vim-import-js'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise' " adds ending tokens for ruby
 Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
 Plug 'etordera/deoplete-rails'
 " Plug 'tpope/vim-rake'
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-rbenv'
-" Plug 'thoughtbot/vim-rspec'
 
 " golang ->>2
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -58,10 +58,10 @@ Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
 " Plug 'Shougo/echodoc'
 " Plug 'tpope/vim-dispatch' " async task runner
-" Plug 'autozimu/LanguageClient-neovim', {
-"   \ 'branch': 'next',
-"   \ 'do': 'bash install.sh',
-"   \ }
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
 
 " tmux
 " Plug 'tmux-plugins/vim-tmux'
