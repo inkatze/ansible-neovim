@@ -17,11 +17,15 @@ neovim_formulas:
   # - rustup-init
   # - watchman
 
-neovim_node_packages:
+neovim_node_lsps:
+  - { name: typescript, version: latest }
   - { name: typescript-language-server, version: latest }
   - { name: neovim, version: latest }
   - { name: import-js, version: latest }
-  - { name: yaml-language-server, version: 0.4.1 }
+  - { name: yaml-language-server, version: latest }
   - { name: vim-language-server, version: latest }
 
 neovim_config_path: nvim
+
+neovim_python_version: 3.9.5
+neovim_ruby_version: 2.7.3

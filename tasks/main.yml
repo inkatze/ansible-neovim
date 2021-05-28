@@ -15,6 +15,21 @@
   tags:
     - neovim
 
+- name: Installing Ruby environment
+  include: ruby.yml
+  tags:
+    - neovim
+
+- name: Installing Python environment
+  include: python.yml
+  tags:
+    - neovim
+
+- name: Installing LSPs
+  include: lsps.yml
+  tags:
+    - neovim
+
 - name: Installing universal-ctags with json support
   homebrew:
     name: universal-ctags/universal-ctags/universal-ctags
