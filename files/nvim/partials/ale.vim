@@ -12,7 +12,6 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_autoimport = 1
 let g:ale_set_balloons = 1
 let g:ale_floating_preview = 1
-let g:ale_ruby_sorbet_options = '--no-config --enable-all-experimental-lsp-features --dir=./'
 let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Linters ->>1
@@ -30,7 +29,7 @@ let g:ale_linters.scss = ['scsslint']
 
 let g:ale_linters.graphql = ['eslint']
 
-let g:ale_linters.ruby = ['solargraph'] " , 'rubocop', 'brakeman', 'rails_best_practices']
+let g:ale_linters.ruby = ['rubocop', 'brakeman', 'rails_best_practices']
 
 " let g:ale_linters={
 " \   'python': ['pylint', 'pycodestyle'],

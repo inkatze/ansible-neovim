@@ -6,23 +6,26 @@ let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,types
 
 " bindings ->>1
 function  LanguageClientMappers()
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nmap <F5> <Plug>(lcn-menu)
+    nmap <silent> <F4> <Plug>(lcn-definition)
+    nmap <silent> <F3> <Plug>(lcn-rename)
+    nmap <silent> gd <Plug>(lcn-definition)
+    nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+    nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+    nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+    nmap <leader>lx :call LanguageClient#textDocument_references()<CR>
+    nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+    nmap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+    nmap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+    nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+    nmap <leader>lm :call LanguageClient_contextMenu()<CR>
+  endif
 endfunction
 
 augroup LSPMappings
   autocmd!
-  autocmd FileType enabledFileTypes call LanguageClientMappers()
+  autocmd FileType * call LanguageClientMappers()
 augroup END
 
 let g:LanguageClient_loggingFile = '/tmp/lsp.log'
@@ -31,8 +34,7 @@ let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {}
 let g:LanguageClient_serverCommands.yaml = ['npx', 'yaml-language-server', '--stdio']
 let g:LanguageClient_serverCommands['yaml.ansible'] = ['npx', 'yaml-language-server', '--stdio']
-" let g:LanguageClient_serverCommands.ruby = ['srb', 'tc', '--lsp', '--disable-watchman']
-let g:LanguageClient_serverCommands.ruby = ['solargraph', 'stdio']
+let g:LanguageClient_serverCommands.ruby = ['srb', 'tc', '--lsp', '--disable-watchman']
 let g:LanguageClient_serverCommands.javascript = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.javascriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescript = ['npx', 'typescript-language-server', '--stdio']
