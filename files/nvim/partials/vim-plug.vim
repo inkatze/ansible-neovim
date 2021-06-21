@@ -69,7 +69,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " misc utils ->>1
 Plug 'tpope/vim-projectionist'
-" Plug 'kristijanhusak/vim-carbon-now-sh' " code screenshots
+Plug 'kristijanhusak/vim-carbon-now-sh' " code screenshots
 " Plug 'tpope/vim-eunuch' " common unix commands
 " Plug '907th/vim-auto-save'
 
