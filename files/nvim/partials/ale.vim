@@ -19,7 +19,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {}
 
 let g:ale_linters.javascript = ['eslint']
-let g:ale_linters.javascript.jsx = ['eslint']
+let g:ale_linters['javascript.jsx'] = ['eslint']
 let g:ale_linters.typescript = ['eslint', 'tslint']
 let g:ale_linters.typescriptreact = ['eslint', 'tslint']
 
