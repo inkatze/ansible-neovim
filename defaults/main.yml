@@ -28,4 +28,4 @@ neovim_node_lsps:
 neovim_config_path: nvim
 
 neovim_python_version: 3.9.5
-neovim_ruby_version: 2.7.3
+neovim_ruby_version: 2.7.4
