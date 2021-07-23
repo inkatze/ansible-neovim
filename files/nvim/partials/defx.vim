@@ -57,7 +57,7 @@ function! s:defx_mappings() abort
 endfunction
 
 " defx-icons ->>1
-let g:defx_icons_column_length = 1
+let g:defx_icons_column_length = 2
 let g:defx_icons_mark_icon = ''
 
 " events ->>1
