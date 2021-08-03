@@ -2,7 +2,7 @@
 set runtimepath+=$HOME/.local/share/nvim/site/pack/plugins/start/LanguageClient-neovim
 set hidden
 
-let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascript.jsx,sorbet,vim,help'
+let enabledFileTypes = 'cpp,c,ruby,yaml,yaml.ansible,javascript,typescript,typescriptreact,javascriptreact,sorbet,vim,help'
 
 " bindings ->>1
 function  LanguageClientMappers()
@@ -36,7 +36,7 @@ let g:LanguageClient_serverCommands.yaml = ['npx', 'yaml-language-server', '--st
 let g:LanguageClient_serverCommands['yaml.ansible'] = ['npx', 'yaml-language-server', '--stdio']
 let g:LanguageClient_serverCommands.ruby = ['srb', 'tc', '--lsp', '--disable-watchman']
 let g:LanguageClient_serverCommands.javascript = ['npx', 'typescript-language-server', '--stdio']
-let g:LanguageClient_serverCommands['javascript.jsx'] = ['npx', 'typescript-language-server', '--stdio']
+let g:LanguageClient_serverCommands.javascriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescript = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.typescriptreact = ['npx', 'typescript-language-server', '--stdio']
 let g:LanguageClient_serverCommands.rust = ['rustup', 'run', 'stable', 'rls']
@@ -93,7 +93,7 @@ let lspsettings = json_decode('
 \        "hover": true,
 \        "validate": true
 \    },
-\   "javascript.jsx": {
+\   "javascriptreact": {
 \        "completion": true,
 \        "hover": true,
 \        "validate": true
@@ -111,7 +111,7 @@ function InitializeLSP()
   let g:LanguageClient_rootMarkers = {
   \   'javascript': ['jsconfig.json',  'package.json'],
   \   'typescript': ['tsconfig.json', 'package.json'],
-  \   'javascript.jsx': ['jsconfig.json', 'package.json'],
+  \   'javascriptreact': ['jsconfig.json', 'package.json'],
   \   'typescriptreact': ['tsconfig.json', 'package.json'],
   \   'vim': ['.git', 'autoload', 'plugin'],
   \   'ruby': ['Gemfile', 'package.yml']

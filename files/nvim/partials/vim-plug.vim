@@ -21,11 +21,14 @@ Plug 'pearofducks/ansible-vim'
 Plug 'dag/vim-fish'
 
 " javascripts ->>2
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
 Plug 'Galooshi/vim-import-js'
+Plug 'yuezk/vim-js'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " ruby ->>2
 Plug 'vim-ruby/vim-ruby'

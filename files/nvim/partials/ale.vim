@@ -19,7 +19,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {}
 
 let g:ale_linters.javascript = ['eslint']
-let g:ale_linters['javascript.jsx'] = ['eslint']
+let g:ale_linters.javascriptreact = ['eslint']
 let g:ale_linters.typescript = ['eslint', 'tslint']
 let g:ale_linters.typescriptreact = ['eslint', 'tslint']
 
@@ -42,7 +42,7 @@ let g:ale_linters.ruby = ['rubocop', 'brakeman', 'rails_best_practices']
 let g:ale_fixers = {}
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.javascript = ['prettier', 'importjs', 'tslint']
-let g:ale_fixers['javascript.jsx'] = ['prettier', 'importjs', 'tslint']
+let g:ale_fixers.javascriptreact = ['prettier', 'importjs', 'tslint']
 let g:ale_fixers.typescript = ['prettier', 'importjs', 'tslint']
 let g:ale_fixers.typescriptreact = ['prettier', 'importjs', 'tslint']
 let g:ale_fixers.html = ['prettier']
