@@ -37,13 +37,13 @@
   tags:
     - neovim
 
-- name: Installing vim-plug
+- name: Installing packer
   git:
-    repo: https://github.com/junegunn/vim-plug.git
+    repo: https://github.com/wbthomason/packer.nvim
     depth: "1"
     force: yes
     recursive: yes
-    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload"
+    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
   tags:
     - neovim
 
@@ -56,13 +56,13 @@
     - neovim
 
 - name: Installing neovim plugins
-  shell: nvim -c '\n' -c 'silent PlugInstall' -c 'silent UpdateRemotePlugins' -c 'qa!' &> /dev/null < /dev/tty
+  shell: nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/plugins.lua' -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -c 'silent! TSInstall maintained' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - neovim
 
 - name: Updating neovim plugins
-  shell: nvim -c '\n' -c 'silent PlugUpdate' -c 'silent UpdateRemotePlugins' -c 'qa!' &> /dev/null < /dev/tty
+  shell: nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/plugins.lua' -c 'PackerSync' -c 'TSUpdate' -c 'qa!' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - upgrade

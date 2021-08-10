@@ -1,0 +1,7 @@
+require('plugins')
+require('options')
+require('colorscheme')
+require('local-lspconfig')
+require('local-nvim-treesitter')
+require('local-lspsaga')
+require('local-telescope')
