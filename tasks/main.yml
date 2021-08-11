@@ -27,8 +27,6 @@
 
 - name: Installing LSPs
   include: lsps.yml
-  tags:
-    - neovim
 
 - name: Installing universal-ctags with json support
   homebrew:

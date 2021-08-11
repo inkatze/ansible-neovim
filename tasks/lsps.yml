@@ -2,8 +2,17 @@
 
 - name: Installing neovim's Node LSPs
   npm:
-    name: "{{ item.name }}"
-    version: "{{ item.version }}"
+    name: "{{ item }}"
+    global: yes
+  with_items: "{{ neovim_node_lsps }}"
+  tags:
+    - neovim
+
+- name: Upgrade neovim's Node LSPs
+  npm:
+    name: "{{ item }}"
     global: yes
     state: latest
   with_items: "{{ neovim_node_lsps }}"
+  tags:
+    - upgrade
