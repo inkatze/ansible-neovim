@@ -27,4 +27,5 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use 'mhinz/vim-signify'  -- Git changes indication in buffer
+  use 'tpope/vim-fugitive'  -- Git commands for vim
 end)

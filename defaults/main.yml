@@ -25,6 +25,7 @@ neovim_node_lsps:
   - neovim
   - import-js
   - yaml-language-server
+  - ansible-language-server
   - vim-language-server
   - diagnostic-languageserver
 
