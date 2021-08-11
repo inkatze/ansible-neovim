@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map('n', '<c-n>', '<cmd>NvimTreeToggle<cr>', opts)
+vim.g.nvim_tree_follow = 1
+vim.api.nvim_set_keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>', opts)
