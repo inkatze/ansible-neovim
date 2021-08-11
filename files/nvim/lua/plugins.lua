@@ -21,4 +21,5 @@ return require('packer').startup(function()
     'glepnir/lspsaga.nvim',
     requires = 'neovim/nvim-lspconfig'
   }
+  use 'nvim-lua/completion-nvim'  -- Completion
 end)

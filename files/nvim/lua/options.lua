@@ -17,13 +17,12 @@ opt.softtabstop = 4 -- Makes you think that your spaces are tabs
 opt.shortmess:append('Ac')  -- Ignore swamp files and don't pass completion messages
 opt.tabstop = 4 -- The all powerfull tab number
 opt.formatoptions:append('j') -- Smarter line joins
-opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 opt.signcolumn = 'yes' -- Always show the signcolumn
 
 -- Cosmetics
 opt.laststatus = 2 -- Always show the status bar
 opt.linebreak = true -- Break lines by word, not by char
-opt.mouse = 'nvc' -- You can use the mouse, but not in insert mode
+opt.mouse = 'nvca' -- You can use the mouse, but not in insert mode
 opt.number = true -- Show line numbers
 opt.ruler = true -- Show row and col percentage
 opt.scrolloff = 20 -- Kind of a cursor margin
