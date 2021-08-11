@@ -21,5 +21,10 @@ return require('packer').startup(function()
     'glepnir/lspsaga.nvim',
     requires = 'neovim/nvim-lspconfig'
   }
-  use 'nvim-lua/completion-nvim'  -- Completion
+  use 'hrsh7th/nvim-compe'  -- Completion
+  use {  -- Status bar
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  use 'mhinz/vim-signify'  -- Git changes indication in buffer
 end)
