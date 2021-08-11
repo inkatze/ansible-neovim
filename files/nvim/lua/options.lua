@@ -76,8 +76,8 @@ map('n', '<leader>CP', '<cmd>let @@ = expand("%:p")<CR>', opts)
 map('n', '<leader>CP+', '<cmd>let @+ = expand("%:p")<CR>', opts)
 
 -- Buffer navigation
-map('', '<s-left>', '<cmd>bp<cr>', opts)
-map('', '<s-right>', '<cmd>bn<cr>', opts)
+map('', '<s-left>', '<cmd>BufferPrevious<cr>', opts)
+map('', '<s-right>', '<cmd>BufferNext<cr>', opts)
 
 
 -- Keep my text highlighted plz
