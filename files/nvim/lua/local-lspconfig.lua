@@ -30,6 +30,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Auto formatting
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_command [[augroup Format]]
+    vim.api.nvim_command [[autocmd! * <buffer>]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    vim.api.nvim_command [[augroup END]]
+  end
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -43,3 +51,93 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc', 'ruby' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = 'eslint_d',
+        rootPatterns = { '.git' },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+        sourceName = 'eslint_d',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+      rubocop = {
+        sourceName = 'rubocop',
+        command = 'bundle',
+        debounce = 100,
+        args = {
+          'exec',
+          'rubocop',
+          '--format',
+          'json',
+          '--force-exclusion',
+          '--stdin',
+          '%filepath',
+        },
+        parseJson = {
+          errorsRoot = 'files[0].offenses',
+          line = 'location.start_line',
+          endLine = 'location.last_line',
+          column = 'location.start_column',
+          endColumn = 'location.end_column',
+          message = '[rubocop] [${cop_name}] ${message}',
+          security = 'severity',
+        },
+        securities = {
+          fatal = 'error',
+          error = 'error',
+          warning = 'warning',
+          convention = 'info',
+          refactor = 'info',
+          info = 'info',
+        },
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+      ruby = 'rubocop'
+    },
+    formatters = {
+      eslint_d = {
+        command = 'eslint_d',
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+        rootPatterns = { '.git' },
+      },
+      prettier = {
+        command = 'prettier',
+        args = { '--stdin-filepath', '%filename' }
+      },
+    },
+    formatFiletypes = {
+      css = 'prettier',
+      javascript = 'eslint_d',
+      javascriptreact = 'eslint_d',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
+      json = 'prettier',
+      markdown = 'prettier',
+    }
+  }
+}
