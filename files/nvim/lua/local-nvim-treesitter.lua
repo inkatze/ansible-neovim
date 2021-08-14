@@ -7,6 +7,9 @@ local nvim_treesitter = require 'nvim-treesitter.configs'.setup {
   indent = {
     enable = true,
   },
+  autopairs = {  -- Used by nvim-autopair
+    enable = true
+  },
   incremental_selection = {
     enable = true,
     keymaps = {

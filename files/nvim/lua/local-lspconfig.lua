@@ -35,7 +35,7 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
     vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync({}, 5000)]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync({}, 1000)]]
     vim.api.nvim_command [[augroup END]]
   end
 end
@@ -126,18 +126,6 @@ nvim_lsp.diagnosticls.setup {
         command = 'prettier',
         args = { '--stdin-filepath', '%filename' }
       },
-      rubocop = {
-        command = 'bundle',
-        isStdout = false,
-        doesWriteToFile = true,
-        args = {
-          'exec',
-          'rubocop',
-          '--force-exclusion',
-          '--auto-correct',
-          '%file',
-        },
-      }
     },
     formatFiletypes = {
       css = 'prettier',
@@ -150,7 +138,6 @@ nvim_lsp.diagnosticls.setup {
       typescriptreact = 'eslint_d',
       json = 'prettier',
       markdown = 'prettier',
-      ruby = 'rubocop'
     }
   }
 }

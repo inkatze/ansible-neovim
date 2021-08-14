@@ -62,10 +62,12 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 --This line is important for auto-import
-vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
-
-vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
+-- This is disabled to be compatible with nvim-autopairs
+-- vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
+vim.api.nvim_set_keymap('i', '<c-e>', 'compe#close("<c-e>")', { expr = true })
+vim.api.nvim_set_keymap('i', '<c-f>', 'compe#scroll({ "delta": +4 })', { expr = true })
+vim.api.nvim_set_keymap('i', '<c-d>', 'compe#scroll({ "delta": -4 })', { expr = true })
 
 -- Fancy source icons
 require('vim.lsp.protocol').CompletionItemKind = {
