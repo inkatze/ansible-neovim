@@ -54,13 +54,21 @@
     - neovim
 
 - name: Installing neovim plugins
-  shell: nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/plugins.lua' -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -c 'silent! TSInstall maintained' &> /dev/null < /dev/tty
+  shell: >
+    nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/configs/plugins.lua'
+    -c 'autocmd User PackerComplete quitall'
+    -c 'silent! PackerSync'
+    -c 'silent! TSInstall maintained'
+    -c 'silent! TSUpdate' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - neovim
 
 - name: Updating neovim plugins
-  shell: nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/plugins.lua' -c 'PackerSync' -c 'TSUpdate' -c 'qa!' &> /dev/null < /dev/tty
+  shell: >
+    nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/configs/plugins.lua'
+    -c 'silent! PackerSync'
+    -c 'silent! TSUpdate' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - upgrade
