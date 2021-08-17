@@ -67,6 +67,7 @@
 - name: Updating neovim plugins
   shell: >
     nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/configs/plugins.lua'
+    -c 'autocmd User PackerComplete quitall'
     -c 'silent! PackerSync'
     -c 'silent! TSUpdate' &> /dev/null < /dev/tty
   changed_when: false

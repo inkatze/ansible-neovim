@@ -20,8 +20,8 @@
     RBENV_VERSION: "{{ neovim_ruby_version }}"
   with_items:
     - neovim
-    - solargraph
     - bundler
+    - rubocop
 
 - name: Rehashing environments
   command: rbenv rehash

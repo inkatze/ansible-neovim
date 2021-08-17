@@ -31,5 +31,5 @@ neovim_node_lsps:
 
 neovim_config_path: nvim
 
-neovim_python_version: 3.9.5
+neovim_python_version: "{{ lookup('env', 'PYENV_VERSION') | default('3.9.6', True) }}"
 neovim_ruby_version: 2.7.4

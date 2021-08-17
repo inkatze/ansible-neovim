@@ -20,6 +20,7 @@
       - pynvim
       - neovim
       - msgpack
+      - pyright
     executable: "{{ pyenv_root.stdout }}/versions/{{ neovim_python_version }}/bin/pip"
     state: latest
 
