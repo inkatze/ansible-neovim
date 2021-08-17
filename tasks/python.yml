@@ -1,18 +1,18 @@
 ---
 
-- name: Checking Installed Python interpreters
-  command: pyenv versions
-  register: pyenv_versions
-  changed_when: false
-
 - name: Storing pyenv root
   command: pyenv root
   register: pyenv_root
   changed_when: false
 
+- name: Checking Installed Python interpreters
+  command: ls {{ pyenv_root.stdout }}/versions
+  register: pyenv_versions
+  changed_when: false
+
 - name: Installing Python interpreters for neovim
-  command: pyenv install {{ neovim_python_version }}
-  when: not (neovim_python_version in (pyenv_versions.stdout_lines | map('trim') | list))
+  command: pyenv install {{ lookup('env', 'PYENV_VERSION') | default(neovim_python_version) }}
+  when: not ((lookup('env', 'PYENV_VERSION') | default(neovim_python_version)) in (pyenv_versions.stdout_lines | map('trim') | list))
 
 - name: Installing Python neovim host clients
   pip:
@@ -21,7 +21,7 @@
       - neovim
       - msgpack
       - pyright
-    executable: "{{ pyenv_root.stdout }}/versions/{{ neovim_python_version }}/bin/pip"
+    executable: "{{ pyenv_root.stdout }}/versions/{{ lookup('env', 'PYENV_VERSION') | default(neovim_python_version) }}/bin/pip3"
     state: latest
 
 - name: Rehashing environments
