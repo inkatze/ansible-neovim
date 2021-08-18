@@ -1,23 +1,24 @@
 ---
+- name: Storing rbenv root
+  command: rbenv root
+  register: rbenv_root
+  changed_when: false
 
 - name: Checking installed ruby interpreters
-  command: rbenv versions
-  register: ruby_versions
+  command: ls {{ rbenv_root.stdout }}/versions
+  register: rbenv_versions
   changed_when: false
-  when: neovim_ruby_version | string
 
 - name: Installing Ruby interpreter for neovim
-  command: rbenv install {{ neovim_ruby_version }}
-  when: neovim_ruby_version and not (neovim_ruby_version in ruby_versions.stdout)
+  command: rbenv install {{ lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version) }}
+  when: not ((lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version)) in (rbenv_versions.stdout_lines | map('trim') | list))
 
 - name: Installing Ruby's neovim gems
   gem:
     name: "{{ item }}"
     state: latest
     user_install: no
-    executable: "{{ ansible_env.HOME }}/.rbenv/versions/{{ neovim_ruby_version }}/bin/gem"
-  environment:
-    RBENV_VERSION: "{{ neovim_ruby_version }}"
+    executable: "{{ rbenv_root.stdout }}/versions/{{ lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version) }}/bin/gem"
   with_items:
     - neovim
     - bundler

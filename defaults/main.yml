@@ -31,5 +31,5 @@ neovim_node_lsps:
 
 neovim_config_path: nvim
 
-neovim_python_version: ''
-neovim_ruby_version: 2.7.4
+neovim_python_version: ""
+neovim_ruby_version: ""

@@ -1,5 +1,4 @@
 ---
-
 - name: Storing pyenv root
   command: pyenv root
   register: pyenv_root
