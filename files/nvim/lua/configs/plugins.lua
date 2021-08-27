@@ -1,6 +1,6 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'  -- package manager
-  use 'marko-cerovac/material.nvim'  -- colorscheme
+  use "Pocco81/Catppuccino.nvim"  -- colorscheme
 
   use {  -- Fancy tab/buffer bar
     'romgrk/barbar.nvim',
