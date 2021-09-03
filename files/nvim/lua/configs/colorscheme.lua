@@ -3,7 +3,7 @@ local catppuccino = require('catppuccino')
 -- configure it
 catppuccino.setup(
   {
-    colorscheme = 'catppuccino',
+    colorscheme = 'dark_catppuccino',
     transparency = false,
     styles = {
       comments = 'italic',

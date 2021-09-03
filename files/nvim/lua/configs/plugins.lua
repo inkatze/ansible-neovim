@@ -29,4 +29,5 @@ return require('packer').startup(function()
   use 'mhinz/vim-signify'  -- Git changes indication in buffer
   use 'tpope/vim-fugitive'  -- Git commands for vim
   use 'windwp/nvim-autopairs' -- Auto-pairs with nvim-treesitter integration
+  use 'kristijanhusak/vim-carbon-now-sh'  -- Nice snippet screenshot plugin
 end)
