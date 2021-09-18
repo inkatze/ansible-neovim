@@ -33,7 +33,10 @@ catppuccino.setup(
         show_root = true
       },
       which_key = false,
-      indent_blankline = true,
+      indent_blankline = {
+        enabled = false,
+        colored_indent_levels = false,
+      },
       dashboard = false,
       neogit = false,
       vim_sneak = false,
