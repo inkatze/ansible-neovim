@@ -1,5 +1,4 @@
 ---
-
 - name: Installing neovim formulas
   homebrew:
     name: "{{ neovim_formulas }}"
@@ -31,7 +30,7 @@
 - name: Installing universal-ctags with json support
   homebrew:
     name: universal-ctags/universal-ctags/universal-ctags
-    install_options: 'with-jansson,HEAD'
+    install_options: "with-jansson,HEAD"
   tags:
     - neovim
 
@@ -55,7 +54,7 @@
 
 - name: Installing neovim plugins
   shell: >
-    nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/configs/plugins.lua'
+    nvim --headless
     -c 'autocmd User PackerComplete quitall'
     -c 'silent! PackerSync'
     -c 'silent! TSInstall maintained'
@@ -66,7 +65,7 @@
 
 - name: Updating neovim plugins
   shell: >
-    nvim --headless -u '{{ ansible_env.HOME }}/.config/nvim/lua/configs/plugins.lua'
+    nvim --headless
     -c 'autocmd User PackerComplete quitall'
     -c 'silent! PackerSync'
     -c 'silent! TSUpdate' &> /dev/null < /dev/tty

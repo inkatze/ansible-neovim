@@ -63,8 +63,9 @@ require('packer').startup(function()
   use {'tpope/vim-fugitive', event = 'VimEnter *'}  -- Git commands for vim
   use { -- Auto-pairs with nvim-treesitter integration
     'windwp/nvim-autopairs',
-    event = 'BufEnter *',
-    config = function() require('configs.nvim-autopairs') end
+    event = 'VimEnter *',
+    requires = {{'hrsh7th/nvim-compe'}},
+    config = require('configs.nvim-autopairs').config
   }
   use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh'}  -- Nice snippet screenshot plugin
 
