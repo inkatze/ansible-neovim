@@ -25,6 +25,12 @@ function nvim_tree_config.settings()
   vim.g.nvim_tree_ignore = ignore_list
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>', opts)
+  vim.g.nvim_tree_show_icons = {
+    git = 0,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1
+  }
 end
 
 return nvim_tree_config

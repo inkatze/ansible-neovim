@@ -14,7 +14,7 @@ require('packer').startup(function()
   use {  -- File explorer
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    cmd = 'NvimTreeToggle',
+    event = 'VimEnter *',
     opt = true,
     config = nvim_tree_config.config,
     setup = nvim_tree_config.settings
