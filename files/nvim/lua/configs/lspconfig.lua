@@ -57,6 +57,35 @@ nvim_lsp.sorbet.setup {
   filetypes = { "ruby" },
 }
 
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+nvim_lsp.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim', 'use'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc', 'ruby' },
@@ -141,7 +170,6 @@ nvim_lsp.diagnosticls.setup {
       less = 'prettier',
       typescript = 'eslint_d',
       typescriptreact = 'eslint_d',
-      json = 'prettier',
       markdown = 'prettier',
     }
   }

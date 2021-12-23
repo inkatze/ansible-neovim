@@ -5,15 +5,15 @@ neovim_formulas:
   - neovim
   - tree-sitter
   - luajit
+  - lua-language-server
+  - pyenv
+  - rbenv
   # - ansible-lint
   # - bat
   # - CMake
   # - findutils
   # - gotags
   # - proselint
-  # - pyenv
-  # - pyenv-virtualenv
-  # - rbenv
   # - rg
   # - rust-analyzer
   # - rustup-init

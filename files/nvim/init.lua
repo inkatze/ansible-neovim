@@ -14,11 +14,11 @@ require('packer').startup(function()
   use {  -- Fancy symbol trees for syntax and others
     'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter *',
-    requires = 'p00f/nvim-ts-rainbow',
     config = function() require('configs.nvim-treesitter') end
   }
   use {  -- Colored delimiters
     'p00f/nvim-ts-rainbow',
+    requires = 'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter *',
   }
   use {  -- Completion
@@ -44,9 +44,10 @@ require('packer').startup(function()
   }
   use { -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}},
+    requires = {{'nvim-lua/plenary.nvim'}, {'sudormrfbin/cheatsheet.nvim', opt = true}},
     cmd = 'Telescope',
-    setup = function() require('configs.telescope') end
+    config = require('configs.telescope').config,
+    setup = require('configs.telescope').setup
   }
   use { -- Project navigation
     'tpope/vim-projectionist',
@@ -118,20 +119,11 @@ require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim' -- Indentation guides
 
   -- Sharing ->> 1
-  use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh'}  -- Nice snippet screenshot plugin
+  use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh', opt = true}  -- Nice snippet screenshot plugin
 
   -- Language specific ->> 1
   -- Ruby ->> 2
   use {'tpope/vim-rails', ft = 'ruby'} -- Rails support
-
-  -- Neovim ->> 2
-  use {  -- Show command in a telescope prompt
-    'sudormrfbin/cheatsheet.nvim',
-
-    requires = {
-      {'nvim-telescope/telescope.nvim'},
-    }
-  }
 
   -- Fish ->> 2
   use { 'dag/vim-fish', ft = 'fish' }
