@@ -42,7 +42,19 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'ansiblels', 'yamlls' }
+local servers = {
+  'pyright',
+  'rust_analyzer',
+  'tsserver',
+  'ansiblels',
+  'yamlls',
+  'bashls',
+  'grammarly',
+  'graphql',
+  'jsonls',
+  'solargraph'
+}
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -53,7 +65,7 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp.sorbet.setup {
-  cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+  cmd = { "bin/srb", "tc", "--lsp" },
   filetypes = { "ruby" },
 }
 
@@ -88,7 +100,19 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc', 'ruby' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'json',
+    'typescript',
+    'typescriptreact',
+    'css',
+    'less',
+    'scss',
+    'markdown',
+    'pandoc',
+    'ruby'
+  },
   init_options = {
     linters = {
       eslint = {

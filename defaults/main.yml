@@ -28,6 +28,10 @@ neovim_node_lsps:
   - ansible-language-server
   - vim-language-server
   - diagnostic-languageserver
+  - bash-language-server
+  - '@emacs-grammarly/unofficial-grammarly-language-server'
+  - graphql-language-service-cli
+  - vscode-langservers-extracted
 
 neovim_config_path: nvim
 

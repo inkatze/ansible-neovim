@@ -23,6 +23,7 @@
     - neovim
     - bundler
     - rubocop
+    - solargraph
 
 - name: Rehashing environments
   command: rbenv rehash
