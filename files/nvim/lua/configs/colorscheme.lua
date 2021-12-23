@@ -1,52 +1,53 @@
-local catppuccino = require('catppuccino')
+local catppuccin = require('catppuccin')
 
 -- configure it
-catppuccino.setup(
+catppuccin.setup(
   {
-    colorscheme = 'dark_catppuccino',
-    transparency = false,
-    styles = {
-      comments = 'italic',
-      functions = 'italic',
-      keywords = 'italic',
-      strings = 'NONE',
-      variables = 'NONE',
-    },
     integrations = {
       treesitter = true,
       native_lsp = {
         enabled = true,
-        styles = {
-          errors = 'italic',
-          hints = 'italic',
-          warnings = 'italic',
-          information = 'italic'
-        }
+        virtual_text = {
+          errors = "italic",
+          hints = "italic",
+          warnings = "italic",
+          information = "italic",
+        },
+        underlines = {
+          errors = "underline",
+          hints = "underline",
+          warnings = "underline",
+          information = "underline",
+        },
       },
-      lsp_trouble = false,
+      lsp_trouble = true,
       lsp_saga = true,
       gitgutter = false,
-      gitsigns = false,
+      gitsigns = true,
       telescope = true,
       nvimtree = {
         enabled = true,
-        show_root = true
+        show_root = true,
       },
       which_key = false,
       indent_blankline = {
-        enabled = false,
-        colored_indent_levels = false,
+        enabled = true,
+        colored_indent_levels = true,
       },
       dashboard = false,
-      neogit = false,
+      neogit = true,
       vim_sneak = false,
       fern = false,
       barbar = true,
-      bufferline = false,
+      bufferline = true,
       markdown = true,
+      lightspeed = false,
+      ts_rainbow = true,
+      hop = false,
+      cmp = true
     }
   }
 )
 
 -- load it
-catppuccino.load()
+vim.cmd[[colorscheme catppuccin]]

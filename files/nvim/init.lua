@@ -4,7 +4,30 @@ local nvim_tree_config = require('configs.nvim-tree')
 local opts = { noremap = true, silent = true }
 
 require('packer').startup(function()
+  -- Core ->> 1
   use 'wbthomason/packer.nvim'  -- package manager
+  use { -- neovim's lsp pre-configurations
+    'neovim/nvim-lspconfig',
+    event = 'BufEnter *',
+    config = function() require('configs.lspconfig') end
+  }
+  use {  -- Fancy symbol trees for syntax and others
+    'nvim-treesitter/nvim-treesitter',
+    event = 'BufEnter *',
+    requires = 'p00f/nvim-ts-rainbow',
+    config = function() require('configs.nvim-treesitter') end
+  }
+  use {  -- Colored delimiters
+    'p00f/nvim-ts-rainbow',
+    event = 'BufEnter *',
+  }
+  use {  -- Completion
+    'hrsh7th/nvim-compe',
+    event = 'BufEnter *',
+    config = function() require('configs.compe') end
+  }
+
+  -- File/Buffer navigation ->> 1
   use {  -- Fancy tab/buffer bar
     'romgrk/barbar.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -19,23 +42,19 @@ require('packer').startup(function()
     config = nvim_tree_config.config,
     setup = nvim_tree_config.settings
   }
-
-  use { -- neovim's lsp pre-configurations
-    'neovim/nvim-lspconfig',
-    event = 'BufEnter *',
-    config = function() require('configs.lspconfig') end
-  }
-  use {  -- Fancy symbol trees for syntax and others
-    'nvim-treesitter/nvim-treesitter',
-    event = 'BufEnter *',
-    config = function() require('configs.nvim-treesitter') end
-  }
-  use {  -- Fuzzy finder
+  use { -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    requires = {{'nvim-lua/plenary.nvim'}},
     cmd = 'Telescope',
     setup = function() require('configs.telescope') end
   }
+  use { -- Project navigation
+    'tpope/vim-projectionist',
+    ft = 'ruby',
+    config = function() require('configs.projectionist') end
+  }
+
+  -- LSP actions & diagnostics ->> 1
   use {  -- LSP in-editor errors and warnings
     'glepnir/lspsaga.nvim',
     requires = 'neovim/nvim-lspconfig',
@@ -43,10 +62,17 @@ require('packer').startup(function()
     config = lspsaga_config.config,
     setup = lspsaga_config.settings
   }
-  use {  -- Completion
-    'hrsh7th/nvim-compe',
-    event = 'BufEnter *',
-    config = function() require('configs.compe') end
+  use {
+    'folke/trouble.nvim',
+    config = function() require('configs.trouble') end,
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+
+  -- Cosmetics ->> 1
+  use {  -- colorscheme
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function() require('configs.colorscheme') end
   }
   use {  -- Status bar
     'hoob3rt/lualine.nvim',
@@ -55,35 +81,60 @@ require('packer').startup(function()
     event = 'VimEnter *',
     config = function() require('configs.lualine') end
   }
-  use {  -- Git changes indication in buffer
-    'mhinz/vim-signify',
+
+  -- Git ->> 1
+  use {
+    'lewis6991/gitsigns.nvim',
     event = 'BufEnter *',
-    config = function() require('configs.signify') end
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function() require('configs.gitsigns') end
   }
   use {'tpope/vim-fugitive', event = 'VimEnter *'}  -- Git commands for vim
+  use {
+    'TimUntersberger/neogit',
+    event = 'VimEnter *',
+    config = function() require('configs.neogit') end,
+    requires = 'nvim-lua/plenary.nvim'
+  }
+
+  -- Text editing helpers ->> 1
   use { -- Auto-pairs with nvim-treesitter integration
     'windwp/nvim-autopairs',
     event = 'VimEnter *',
     requires = {{'hrsh7th/nvim-compe'}},
     config = require('configs.nvim-autopairs').config
   }
-  use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh'}  -- Nice snippet screenshot plugin
-
-  use {'tpope/vim-rails', ft = 'ruby'} -- Rails support
-  use { -- Project navigation
-    'tpope/vim-projectionist',
-    ft = 'ruby',
-    config = function() require('configs.projectionist') end
-  }
-  use {
+  use {  -- Use correct comment token
     'tpope/vim-commentary',
     event = 'BufEnter *'
   }
-
-  use {  -- colorscheme
-    'Pocco81/Catppuccino.nvim',
-    config = function() require('configs.colorscheme') end
+  use {
+    'mattn/emmet-vim',
+    event = 'BufEnter *',
+    config = function() require('configs.emmet') end
   }
+  use 'lukas-reineke/indent-blankline.nvim' -- Indentation guides
+
+  -- Sharing ->> 1
+  use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh'}  -- Nice snippet screenshot plugin
+
+  -- Language specific ->> 1
+  -- Ruby ->> 2
+  use {'tpope/vim-rails', ft = 'ruby'} -- Rails support
+
+  -- Neovim ->> 2
+  use {  -- Show command in a telescope prompt
+    'sudormrfbin/cheatsheet.nvim',
+
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+    }
+  }
+
+  -- Fish ->> 2
+  use { 'dag/vim-fish', ft = 'fish' }
 end)
 
 require('configs.options')
