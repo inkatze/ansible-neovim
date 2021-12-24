@@ -8,16 +8,10 @@ neovim_formulas:
   - lua-language-server
   - pyenv
   - rbenv
-  # - ansible-lint
-  # - bat
-  # - CMake
-  # - findutils
-  # - gotags
-  # - proselint
-  # - rg
-  # - rust-analyzer
-  # - rustup-init
-  # - watchman
+  - go
+  - golangci-lint
+  - rust-analyzer
+  - composer
 
 neovim_node_lsps:
   - typescript
@@ -32,6 +26,9 @@ neovim_node_lsps:
   - '@emacs-grammarly/unofficial-grammarly-language-server'
   - graphql-language-service-cli
   - vscode-langservers-extracted
+  - pyright
+  - intelephense
+  - rome
 
 neovim_config_path: nvim
 

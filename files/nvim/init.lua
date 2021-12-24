@@ -125,6 +125,9 @@ require('packer').startup(function()
   -- Ruby ->> 2
   use {'tpope/vim-rails', ft = 'ruby'} -- Rails support
 
+  -- PH💩
+  use {'phpactor/phpactor', run = 'composer install --no-dev -o', ft = 'php'}
+
   -- Fish ->> 2
   use { 'dag/vim-fish', ft = 'fish' }
 end)

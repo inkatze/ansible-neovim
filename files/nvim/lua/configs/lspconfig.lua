@@ -52,7 +52,12 @@ local servers = {
   'grammarly',
   'graphql',
   'jsonls',
-  'solargraph'
+  'solargraph',
+  'intelephense',
+  'rome',
+  'golangci_lint_ls',
+  'gopls',
+  'rust_analyzer',
 }
 
 for _, lsp in ipairs(servers) do
@@ -96,6 +101,10 @@ nvim_lsp.sumneko_lua.setup {
       },
     },
   },
+}
+
+nvim_lsp.phpactor.setup {
+  cmd = { vim.fn.stdpath('data')..'/site/pack/packer/opt/phpactor/bin/phpactor', 'language-server' }
 }
 
 nvim_lsp.diagnosticls.setup {
