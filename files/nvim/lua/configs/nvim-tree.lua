@@ -28,7 +28,7 @@ function nvim_tree_config.config()
   }
 end
 
-function nvim_tree_config.settings()
+function nvim_tree_config.setup()
   vim.g.nvim_tree_highlight_opened_files = 1
   vim.g.nvim_tree_git_hl = 0
   vim.g.nvim_tree_ignore = ignore_list

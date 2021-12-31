@@ -43,7 +43,7 @@ catppuccin.setup(
       markdown = true,
       lightspeed = false,
       ts_rainbow = true,
-      hop = false,
+      hop = true,
       cmp = true
     }
   }

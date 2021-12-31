@@ -1,8 +1,3 @@
-local lspsaga_config = require('configs.lspsaga')
-local nvim_tree_config = require('configs.nvim-tree')
-
-local opts = { noremap = true, silent = true }
-
 require('packer').startup(function()
   -- Core ->> 1
   use 'wbthomason/packer.nvim'  -- package manager
@@ -39,8 +34,8 @@ require('packer').startup(function()
     requires = 'kyazdani42/nvim-web-devicons',
     event = 'VimEnter *',
     opt = true,
-    config = nvim_tree_config.config,
-    setup = nvim_tree_config.settings
+    config = require('configs.nvim-tree').config,
+    setup = require('configs.nvim-tree').setup
   }
   use { -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
@@ -60,8 +55,8 @@ require('packer').startup(function()
     'glepnir/lspsaga.nvim',
     requires = 'neovim/nvim-lspconfig',
     cmd = 'Lspsaga',
-    config = lspsaga_config.config,
-    setup = lspsaga_config.settings
+    config = require('configs.lspsaga').config,
+    setup = require('configs.lspsaga').settings
   }
   use {
     'folke/trouble.nvim',
@@ -117,6 +112,12 @@ require('packer').startup(function()
     config = function() require('configs.emmet') end
   }
   use 'lukas-reineke/indent-blankline.nvim' -- Indentation guides
+  use {
+    'phaazon/hop.nvim',
+    event = 'BufEnter',
+    config = require('configs.hop').config,
+    setup = require('configs.hop').setup
+  }
 
   -- Sharing ->> 1
   use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh', opt = true}  -- Nice snippet screenshot plugin
