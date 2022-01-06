@@ -44,7 +44,8 @@ catppuccin.setup(
       lightspeed = false,
       ts_rainbow = true,
       hop = true,
-      cmp = true
+      cmp = true,
+      notify = true
     }
   }
 )
