@@ -10,10 +10,11 @@ function telescope.setup()
 end
 
 function telescope.config()
-  require('telescope').setup {
+  require('telescope').setup{
     defaults = {
-      layout_strategy = 'vertical'
-    },
+      layout_strategy = 'vertical',
+      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/" }
+    }
   }
 end
 

@@ -15,22 +15,17 @@
     - neovim
 
 - name: Installing Ruby environment
-  include: ruby.yml
+  include_tasks: ruby.yml
   tags:
     - neovim
 
 - name: Installing Python environment
-  include: python.yml
+  include_tasks: python.yml
   tags:
     - neovim
 
 - name: Installing LSPs
-  include: lsps.yml
-
-- name: Installing universal-ctags with json support
-  homebrew:
-    name: universal-ctags/universal-ctags/universal-ctags
-    install_options: "with-jansson,HEAD"
+  include_tasks: lsps.yml
   tags:
     - neovim
 

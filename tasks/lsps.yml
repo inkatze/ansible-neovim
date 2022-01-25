@@ -1,9 +1,18 @@
 ---
 
+- name: Get current node version
+  register: node_version
+  shell:
+    cmd: nvm current
+    executable: /opt/homebrew/bin/fish
+  tags:
+    - neovim
+
 - name: Installing neovim's Node LSPs
   npm:
     name: "{{ item }}"
     global: yes
+    executable: "{{ ansible_env.HOME }}/.local/share/nvm/{{ node_version.stdout }}/bin/npm"
   with_items: "{{ neovim_node_lsps }}"
   tags:
     - neovim
@@ -13,6 +22,7 @@
     name: "{{ item }}"
     global: yes
     state: latest
+    executable: "{{ ansible_env.HOME }}/.local/share/nvm/{{ node_version.stdout }}/bin/npm"
   with_items: "{{ neovim_node_lsps }}"
   tags:
     - upgrade

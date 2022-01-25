@@ -25,9 +25,7 @@ require('packer').startup(function()
   -- File/Buffer navigation ->> 1
   use {  -- Fancy tab/buffer bar
     'romgrk/barbar.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    opt = true,
-    event = 'BufEnter *'
+    requires = 'kyazdani42/nvim-web-devicons'
   }
   use {  -- File explorer
     'kyazdani42/nvim-tree.lua',
@@ -53,6 +51,7 @@ require('packer').startup(function()
   -- LSP actions & diagnostics ->> 1
   use {  -- LSP in-editor errors and warnings
     'glepnir/lspsaga.nvim',
+    branch = 'main',
     requires = 'neovim/nvim-lspconfig',
     cmd = 'Lspsaga',
     config = require('configs.lspsaga').config,
@@ -118,6 +117,7 @@ require('packer').startup(function()
     config = require('configs.hop').config,
     setup = require('configs.hop').setup
   }
+  use { 'github/copilot.vim' }
 
   -- Sharing ->> 1
   use {'kristijanhusak/vim-carbon-now-sh', cmd = 'CarbonNowSh', opt = true}  -- Nice snippet screenshot plugin

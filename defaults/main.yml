@@ -2,9 +2,9 @@
 # defaults file for ansible-neovim
 
 neovim_formulas:
+  - ansible-lint
   - neovim
   - tree-sitter
-  - luajit
   - lua-language-server
   - pyenv
   - rbenv
