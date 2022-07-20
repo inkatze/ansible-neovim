@@ -7,6 +7,7 @@
     executable: /opt/homebrew/bin/fish
   tags:
     - neovim
+  changed_when: false
 
 - name: Installing neovim's Node LSPs
   npm:
