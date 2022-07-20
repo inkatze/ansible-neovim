@@ -8,16 +8,16 @@ catppuccin.setup(
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = "italic",
-          hints = "italic",
-          warnings = "italic",
-          information = "italic",
+          errors = {"italic"},
+          hints = {"italic"},
+          warnings = {"italic"},
+          information = {"italic"},
         },
         underlines = {
-          errors = "underline",
-          hints = "underline",
-          warnings = "underline",
-          information = "underline",
+          errors = {"underline"},
+          hints = {"underline"},
+          warnings = {"underline"},
+          information = {"underline"},
         },
       },
       lsp_trouble = true,
@@ -28,6 +28,7 @@ catppuccin.setup(
       nvimtree = {
         enabled = true,
         show_root = true,
+        transparent_panel = true,
       },
       which_key = false,
       indent_blankline = {
