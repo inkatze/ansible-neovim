@@ -23,7 +23,6 @@ neovim_node_lsps:
   - vim-language-server
   - diagnostic-languageserver
   - bash-language-server
-  - '@emacs-grammarly/unofficial-grammarly-language-server'
   - graphql-language-service-cli
   - vscode-langservers-extracted
   - pyright

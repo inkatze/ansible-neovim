@@ -130,8 +130,6 @@ nvim_lsp.diagnosticls.setup {
         args = {
           '--format',
           'json',
-          '--except',
-          'PackageProtections/NamespacedUnderPackageName',
           '--force-exclusion',
           '--stdin',
           '%filepath',
