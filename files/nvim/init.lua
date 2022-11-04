@@ -37,7 +37,11 @@ require('packer').startup(function()
   }
   use { -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}, {'sudormrfbin/cheatsheet.nvim', opt = true}},
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'sudormrfbin/cheatsheet.nvim', opt = true},
+      {'nvim-telescope/telescope-dap.nvim'}
+    },
     cmd = 'Telescope',
     config = require('configs.telescope').config,
     setup = require('configs.telescope').setup
@@ -131,6 +135,14 @@ require('packer').startup(function()
 
   -- Fish ->> 2
   use { 'dag/vim-fish', ft = 'fish' }
+
+  -- Java ->> 2
+  use {
+    'mfussenegger/nvim-jdtls',
+    run = './scripts/link_mac.sh && mvn package -DskipTests',
+    opt = false,
+  }
+  use 'mfussenegger/nvim-dap'
 end)
 
 require('configs.options')

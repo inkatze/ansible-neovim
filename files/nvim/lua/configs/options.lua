@@ -66,6 +66,7 @@ cmd 'autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab'
 cmd 'autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab'
 cmd 'autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab'
 cmd 'autocmd FileType proto setlocal ts=2 sts=2 sw=2 expandtab'
+cmd 'autocmd FileType groovy setlocal ts=4 sts=4 sw=4 noexpandtab'
 
 -- General mappings
 local map = vim.api.nvim_set_keymap
