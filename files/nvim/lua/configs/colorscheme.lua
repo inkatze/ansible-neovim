@@ -46,7 +46,11 @@ catppuccin.setup(
       ts_rainbow = true,
       hop = true,
       cmp = true,
-      notify = true
+      notify = true,
+      dap = {
+        enabled = true,
+        enable_ui = true,
+      },
     }
   }
 )

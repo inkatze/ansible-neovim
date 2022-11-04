@@ -3,22 +3,18 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'  -- package manager
   use { -- neovim's lsp pre-configurations
     'neovim/nvim-lspconfig',
-    event = 'BufEnter *',
     config = function() require('configs.lspconfig') end
   }
   use {  -- Fancy symbol trees for syntax and others
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufEnter *',
     config = function() require('configs.nvim-treesitter') end
   }
   use {  -- Colored delimiters
     'p00f/nvim-ts-rainbow',
     requires = 'nvim-treesitter/nvim-treesitter',
-    event = 'BufEnter *',
   }
   use {  -- Completion
     'hrsh7th/nvim-compe',
-    event = 'BufEnter *',
     config = function() require('configs.compe') end
   }
 
@@ -30,7 +26,6 @@ require('packer').startup(function()
   use {  -- File explorer
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    event = 'VimEnter *',
     opt = true,
     config = require('configs.nvim-tree').config,
     setup = require('configs.nvim-tree').setup
@@ -101,7 +96,6 @@ require('packer').startup(function()
   -- Text editing helpers ->> 1
   use { -- Auto-pairs with nvim-treesitter integration
     'windwp/nvim-autopairs',
-    event = 'VimEnter *',
     requires = {{'hrsh7th/nvim-compe'}},
     config = require('configs.nvim-autopairs').config
   }
