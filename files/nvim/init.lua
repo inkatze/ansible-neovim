@@ -26,6 +26,7 @@ require('packer').startup(function()
   use {  -- File explorer
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
+    event = 'VimEnter *',
     opt = true,
     config = require('configs.nvim-tree').config,
     setup = require('configs.nvim-tree').setup
@@ -52,7 +53,6 @@ require('packer').startup(function()
     'glepnir/lspsaga.nvim',
     branch = 'main',
     requires = 'neovim/nvim-lspconfig',
-    cmd = 'Lspsaga',
     config = require('configs.lspsaga').config,
     setup = require('configs.lspsaga').settings
   }
@@ -72,7 +72,6 @@ require('packer').startup(function()
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     opt = true,
-    event = 'VimEnter *',
     config = function() require('configs.lualine') end
   }
 
@@ -88,7 +87,6 @@ require('packer').startup(function()
   use {'tpope/vim-fugitive', event = 'VimEnter *'}  -- Git commands for vim
   use {
     'TimUntersberger/neogit',
-    event = 'VimEnter *',
     config = function() require('configs.neogit') end,
     requires = 'nvim-lua/plenary.nvim'
   }
@@ -101,7 +99,6 @@ require('packer').startup(function()
   }
   use {  -- Use correct comment token
     'tpope/vim-commentary',
-    event = 'BufEnter *'
   }
   use {
     'mattn/emmet-vim',
