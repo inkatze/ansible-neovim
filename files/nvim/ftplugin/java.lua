@@ -24,6 +24,10 @@ local runtimes = {
     name = "JavaSE-17",
     path = home .. "/.sdkman/candidates/java/17.0.4.1-tem/",
   },
+  {
+    name = "JavaSE-1.8",
+    path = home .. "/.sdkman/candidates/java/8.0.352-zulu/",
+  },
 }
 
 local function on_init(client)

@@ -28,6 +28,9 @@ neovim_node_lsps:
   - pyright
   - intelephense
   - rome
+  - '@angular/language-server'
+  - prettier
+  - eslint_d
 
 neovim_config_path: nvim
 
