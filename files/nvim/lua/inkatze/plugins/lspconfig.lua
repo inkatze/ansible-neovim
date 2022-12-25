@@ -35,24 +35,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {
-  'pyright',
-  'rust_analyzer',
-  'tsserver',
-  'ansiblels',
-  'yamlls',
-  'bashls',
-  'grammarly',
-  'graphql',
-  'jsonls',
-  'sorbet',
-  'intelephense',
-  'rome',
-  'golangci_lint_ls',
-  'gopls',
-  'rust_analyzer',
-  'angularls',
-}
+local servers = {}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -168,4 +151,8 @@ nvim_lsp.diagnosticls.setup {
       ruby = 'rubocop',
     }
   }
+}
+
+nvim_lsp.efm.setup {
+  filetypes = {"elixir", "eelixir", "heex", "surface"}
 }

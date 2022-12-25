@@ -1,8 +1,10 @@
-local catppuccin = require('catppuccin')
-
--- configure it
-catppuccin.setup(
+require('catppuccin').setup(
   {
+    dim_inactive = {
+        enabled = true,
+        shade = "dark",
+        percentage = 0.15,
+    },
     integrations = {
       treesitter = true,
       native_lsp = {
@@ -55,5 +57,4 @@ catppuccin.setup(
   }
 )
 
--- load it
-vim.cmd[[colorscheme catppuccin]]
+vim.cmd.colorscheme 'catppuccin'
