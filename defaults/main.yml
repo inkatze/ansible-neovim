@@ -3,15 +3,12 @@
 
 neovim_formulas:
   - ansible-lint
-  - neovim
-  - tree-sitter
   - lua-language-server
+  - neovim
   - pyenv
   - rbenv
-  - go
-  - golangci-lint
-  - rust-analyzer
-  - composer
+  - tree-sitter
+  - stylua
 
 neovim_node_lsps:
   - typescript
@@ -32,7 +29,7 @@ neovim_node_lsps:
   - prettier
   - eslint_d
 
-neovim_config_path: nvim
+neovim_config_path: "{{ ansible_env.HOME }}/dev/ansible-neovim/files/nvim"
 
 neovim_python_version: ""
 neovim_ruby_version: ""

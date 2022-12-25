@@ -29,20 +29,11 @@
   tags:
     - neovim
 
-- name: Installing packer
-  git:
-    repo: https://github.com/wbthomason/packer.nvim
-    depth: "1"
-    force: yes
-    recursive: yes
-    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
-  tags:
-    - neovim
-
-- name: Updating neovim's configuration folder
-  copy:
+- name: Symlinking neovim config
+  file:
     src: "{{ neovim_config_path }}"
-    dest: "{{ ansible_env.HOME }}/.config"
+    dest: "{{ ansible_env.HOME }}/.config/nvim"
+    state: link
   when: neovim_config_path | string
   tags:
     - neovim
@@ -51,9 +42,9 @@
   shell: >
     nvim --headless
     -c 'autocmd User PackerComplete quitall'
-    -c 'silent! PackerSync'
-    -c 'silent! TSInstall maintained'
-    -c 'silent! TSUpdate' &> /dev/null < /dev/tty
+    -c 'PackerSync'
+    -c 'TSInstall maintained'
+    -c 'TSUpdate' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - neovim
