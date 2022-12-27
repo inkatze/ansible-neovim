@@ -1,7 +1,7 @@
 local telescope = {}
 
 function mappings()
-  local builtin = require('telescope.builtin')
+  local builtin = require("telescope.builtin")
   local opts = { noremap = true, silent = true }
   local wk = require("which-key")
 
@@ -21,19 +21,19 @@ function mappings()
       f = { builtin.git_files, "Git files" },
       st = { builtin.git_status, "Git status" },
       sh = { builtin.git_stash, "Git stash" },
-    }
+    },
   }, { prefix = "<leader>" })
 end
 
 function telescope.config()
-  t = require('telescope')
+  local t = require("telescope")
 
-  t.setup{
+  t.setup({
     defaults = {
-      layout_strategy = 'horizontal',
-      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "plugin/.*" }
-    }
-  }
+      layout_strategy = "horizontal",
+      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "plugin/.*" },
+    },
+  })
 
   mappings()
 end

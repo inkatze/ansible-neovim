@@ -7,13 +7,6 @@
   tags:
     - neovim
 
-- name: Adding universal-tags tap
-  homebrew_tap:
-    name: universal-ctags/universal-ctags
-    state: present
-  tags:
-    - neovim
-
 - name: Installing Ruby environment
   include_tasks: ruby.yml
   tags:
@@ -48,13 +41,4 @@
   changed_when: false
   tags:
     - neovim
-
-- name: Updating neovim plugins
-  shell: >
-    nvim --headless
-    -c 'autocmd User PackerComplete quitall'
-    -c 'silent! PackerSync'
-    -c 'silent! TSUpdate' &> /dev/null < /dev/tty
-  changed_when: false
-  tags:
     - upgrade

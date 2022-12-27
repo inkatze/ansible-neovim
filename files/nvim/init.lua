@@ -1,2 +1,2 @@
-require('inkatze/plugins/packer')
-require('inkatze/base')
+require("inkatze/plugins/packer").start()
+require("inkatze/base")
