@@ -10,6 +10,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local function load_lspconfig()
   require("lspconfig").sumneko_lua.setup({
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
     settings = {
       Lua = {
         runtime = {
@@ -29,7 +30,6 @@ local function load_lspconfig()
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
           enable = false,
-          meh = "  ",
         },
       },
     },
@@ -50,7 +50,7 @@ end
 
 local packer = require("inkatze.plugins.packer")
 
-if packer.is_installed("nvim-lspconfig") then
+if packer.is_installed("nvim-lspconfig") and packer.is_installed("cmp-nvim-lsp") then
   load_lspconfig()
 end
 

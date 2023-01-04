@@ -48,15 +48,29 @@ function packer.start()
       })
 
       use({
+        "hrsh7th/nvim-cmp",
+        requires = {
+          { "hrsh7th/cmp-nvim-lsp" },
+          { "hrsh7th/cmp-buffer" },
+          { "hrsh7th/cmp-path" },
+          { "hrsh7th/cmp-cmdline" },
+          { "neovim/nvim-lspconfig" },
+          { "onsails/lspkind.nvim" },
+          { "hrsh7th/cmp-vsnip" },
+          { "hrsh7th/vim-vsnip" },
+        },
+        config = require("inkatze.plugins.nvim-cmp").config,
+      })
+
+      use({
         "folke/which-key.nvim",
         config = require("inkatze.plugins.which-key").config,
       })
 
       use({ -- neovim's lsp pre-configurations
         "neovim/nvim-lspconfig",
-        config = function()
-          require("inkatze.plugins.lspconfig")
-        end,
+        config = require("inkatze.plugins.lspconfig").config,
+        run = "brew install lua-language-server",
       })
 
       use({ -- Fancy symbol trees for syntax and others

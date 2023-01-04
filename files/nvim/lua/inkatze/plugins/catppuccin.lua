@@ -33,6 +33,7 @@ function catppuccin.config()
       telescope = true,
       fidget = true,
       which_key = true,
+      cmp = true,
       lsp_trouble = false,
       lsp_saga = false,
       gitgutter = false,
@@ -55,7 +56,6 @@ function catppuccin.config()
       lightspeed = false,
       ts_rainbow = false,
       hop = false,
-      cmp = false,
       dap = {
         enabled = false,
         enable_ui = false,
