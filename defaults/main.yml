@@ -7,8 +7,6 @@ neovim_formulas:
   - neovim
   - pyenv
   - rbenv
-  - tree-sitter
-  - stylua
 
 neovim_node_lsps:
   - typescript
