@@ -11,6 +11,14 @@ local ensure_packer = function()
 	return false
 end
 
+function packer.is_installed(plugin)
+	if packer_plugins[plugin] and packer_plugins[plugin].loaded then
+		return true
+	else
+		return false
+	end
+end
+
 function packer.start()
 	local packer_bootstrap = ensure_packer()
 
