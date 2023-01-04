@@ -1,6 +1,6 @@
 local telescope = {}
 
-function mappings()
+function telescope.mappings()
   local builtin = require("telescope.builtin")
   local opts = { noremap = true, silent = true }
   local wk = require("which-key")
@@ -26,6 +26,10 @@ function mappings()
 end
 
 function telescope.config()
+  if not require("inkatze.plugins.packer").is_installed("telescope.nvim") then
+    return nil
+  end
+
   local t = require("telescope")
 
   t.setup({
@@ -35,7 +39,7 @@ function telescope.config()
     },
   })
 
-  mappings()
+  telescope.mappings()
 end
 
 return telescope

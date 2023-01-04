@@ -22,75 +22,78 @@ end
 function packer.start()
   local packer_bootstrap = ensure_packer()
 
-  if not packer_bootstrap then
-    return false
-  end
+  require("packer").startup({
+    function(use)
+      use("wbthomason/packer.nvim")
+      use({
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = require("inkatze.plugins.catppuccin").config,
+      })
 
-  require("packer").init({
-    autoremove = true,
+      use({
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        requires = { { "nvim-lua/plenary.nvim" } },
+        config = function()
+          require("inkatze.plugins.telescope").config()
+        end,
+      })
+
+      use({
+        "folke/which-key.nvim",
+        config = require("inkatze.plugins.which-key").config,
+      })
+
+      use({ -- neovim's lsp pre-configurations
+        "neovim/nvim-lspconfig",
+        config = function()
+          require("inkatze.plugins.lspconfig")
+        end,
+      })
+
+      use({ -- Fancy symbol trees for syntax and others
+        "nvim-treesitter/nvim-treesitter",
+        config = require("inkatze.plugins.nvim-treesitter").config,
+        run = function()
+          vim.fn.system({ "brew", "install", "tree-sitter" })
+          local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+          ts_update()
+        end,
+      })
+
+      use({
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = { { "nvim-lua/plenary.nvim" } },
+        run = "brew install stylua",
+      })
+
+      use({ -- Use correct comment token
+        "tpope/vim-commentary",
+      })
+
+      use({
+        "rcarriga/nvim-notify",
+        config = require("inkatze.plugins.nvim-notify").config,
+      })
+      use({
+        "j-hui/fidget.nvim",
+        config = require("inkatze.plugins.fidget").config,
+      })
+      if packer_bootstrap then
+        require("packer").sync()
+      end
+    end,
+    config = {
+      autoremove = true,
+      display = {
+        open_fn = function()
+          return require("packer.util").float({ border = "single" })
+        end,
+      },
+      profile = { enable = true, threshold = 100 },
+    },
   })
-
-  require("packer").startup(function(use)
-    use({
-      "catppuccin/nvim",
-      as = "catppuccin",
-      config = function()
-        require("inkatze.plugins.catppuccin")
-      end,
-    })
-
-    use({
-      "nvim-telescope/telescope.nvim",
-      branch = "0.1.x",
-      requires = { { "nvim-lua/plenary.nvim" } },
-      config = function()
-        require("inkatze.plugins.telescope").config()
-      end,
-    })
-
-    use({
-      "folke/which-key.nvim",
-      config = function()
-        require("inkatze.plugins.which-key")
-      end,
-    })
-
-    use({ -- neovim's lsp pre-configurations
-      "neovim/nvim-lspconfig",
-      config = function()
-        require("inkatze.plugins.lspconfig")
-      end,
-    })
-
-    use({ -- Fancy symbol trees for syntax and others
-      "nvim-treesitter/nvim-treesitter",
-      config = function()
-        require("inkatze.plugins.nvim-treesitter")
-      end,
-      run = function()
-        vim.fn.system({ "brew", "install", "tree-sitter" })
-        local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-        ts_update()
-      end,
-    })
-
-    use({
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { { "nvim-lua/plenary.nvim" } },
-      -- config = function()
-      -- 	require("inkatze.plugins.null-ls")
-      -- end,
-      run = "brew install stylua",
-    })
-
-    use({ -- Use correct comment token
-      "tpope/vim-commentary",
-    })
-
-    if packer_bootstrap then
-      require("packer").sync()
-    end
-  end)
 end
 
 return packer
