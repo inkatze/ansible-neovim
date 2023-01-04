@@ -32,6 +32,13 @@ function packer.start()
       })
 
       use({
+        "romgrk/barbar.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+      })
+
+      use({ "lukas-reineke/indent-blankline.nvim", config = require("inkatze.plugins.indent-blankline").cofig })
+
+      use({
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         requires = { { "nvim-lua/plenary.nvim" } },

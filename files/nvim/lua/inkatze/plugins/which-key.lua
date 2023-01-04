@@ -5,7 +5,9 @@ function w.config()
     return nil
   end
 
-  require("which-key").setup({
+  local wk = require("which-key")
+
+  wk.setup({
     plugins = {
       marks = true, -- shows a list of your marks on ' and `
       registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -76,6 +78,14 @@ function w.config()
       buftypes = {},
       filetypes = { "TelescopePrompt" },
     },
+  })
+
+  -- General mappings
+  local opts = { noremap = true, silent = true }
+  wk.register({
+    name = "Navigation",
+    ["<s-left>"] = { "<cmd>BufferPrevious<cr>", "Previous buffer", opts },
+    ["<s-right>"] = { "<cmd>BufferNext<cr>", "Next buffer", opts },
   })
 end
 

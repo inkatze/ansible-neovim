@@ -22,3 +22,7 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 
 vim.g.mapleader = ","
+
+-- Makes invisible chars visible
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
