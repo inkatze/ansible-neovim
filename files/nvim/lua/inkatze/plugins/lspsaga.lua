@@ -1,13 +1,16 @@
 local M = {}
 
 function M.config()
-  if not require("inkatze.plugins.packer").is_installed("lspsaga.nvim") then
+  local packer = require("inkatze.plugins.packer")
+  if not packer.is_installed("lspsaga.nvim") or not packer.is_installed("catppuccin") then
     return nil
   end
 
   local saga = require("lspsaga")
 
-  saga.init_lsp_saga()
+  saga.init_lsp_saga({
+    custom_kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+  })
 
   if not require("inkatze.plugins.packer").is_installed("which-key.nvim") then
     return nil
