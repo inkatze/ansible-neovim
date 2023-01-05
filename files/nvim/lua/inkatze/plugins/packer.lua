@@ -132,6 +132,12 @@ function packer.start()
         config = require("inkatze.plugins.nvim-tree").config,
       })
 
+      use({
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = require("inkatze.plugins.trouble").config,
+      })
+
       if packer_bootstrap then
         require("packer").sync()
       end
