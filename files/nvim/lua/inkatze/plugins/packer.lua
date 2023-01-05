@@ -87,6 +87,7 @@ function packer.start()
         "jose-elias-alvarez/null-ls.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
         run = "brew install stylua",
+        config = require("inkatze.plugins.null-ls").config,
       })
 
       use({ -- Use correct comment token
@@ -136,6 +137,12 @@ function packer.start()
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = require("inkatze.plugins.trouble").config,
+      })
+
+      use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = require("inkatze.plugins.lspsaga").config,
       })
 
       if packer_bootstrap then

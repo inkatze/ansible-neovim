@@ -45,168 +45,79 @@
 --     }
 --   }
 -- end
-
--- nvim_lsp.diagnosticls.setup {
---   on_attach = on_attach,
---   filetypes = {
---     'javascript',
---     'javascriptreact',
---     'json',
---     'typescript',
---     'typescriptreact',
---     'css',
---     'less',
---     'scss',
---     'markdown',
---     'pandoc',
---     'ruby',
---     'html',
---   },
---   init_options = {
---     linters = {
---       eslint = {
---         command = 'eslint_d',
---         rootPatterns = { '.git' },
---         debounce = 100,
---         args = { '--stdin', '--fix-to-stdout', '--stdin-filename', '%filepath', '--format', 'json' },
---         sourceName = 'eslint_d',
---         parseJson = {
---           errorsRoot = '[0].messages',
---           line = 'line',
---           column = 'column',
---           endLine = 'endLine',
---           endColumn = 'endColumn',
---           message = '[eslint] ${message} [${ruleId}]',
---           security = 'severity'
---         },
---         securities = {
---           [2] = 'error',
---           [1] = 'warning'
---         }
---       },
---       rubocop = {
---         sourceName = 'rubocop',
---         command = 'rubocop',
---         debounce = 100,
---         args = {
---           '--format',
---           'json',
---           '--force-exclusion',
---           '--stdin',
---           '%filepath',
---         },
---         parseJson = {
---           errorsRoot = 'files[0].offenses',
---           line = 'location.start_line',
---           endLine = 'location.last_line',
---           column = 'location.start_column',
---           endColumn = 'location.end_column',
---           message = '[rubocop] [${cop_name}] ${message}',
---           security = 'severity',
---         },
---         securities = {
---           fatal = 'error',
---           error = 'error',
---           warning = 'warning',
---           convention = 'info',
---           refactor = 'info',
---           info = 'info',
---         },
---       },
---     },
---     filetypes = {
---       javascript = 'eslint',
---       javascriptreact = 'eslint',
---       typescript = 'eslint',
---       typescriptreact = 'eslint',
---       ruby = 'rubocop'
---     },
---     formatters = {
---       eslint_d = {
---         command = 'npx',
---         args = { 'eslint_d', '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
---         rootPatterns = { '.git' },
---       },
---       prettier = {
---         command = 'npx',
---         args = { 'prettier', '--stdin-filepath', '%filename' }
---       },
---       rubocop = {
---         command = 'rubocop',
---         args = { '--auto-correct', '%filepath' },
---         doesWriteToFile = true,
---       },
---     },
---     formatFiletypes = {
---       css = 'prettier',
---       html = 'prettier',
---       javascript = 'prettier',
---       javascriptreact = 'prettier',
---       json = 'prettier',
---       scss = 'prettier',
---       less = 'prettier',
---       typescript = 'prettier',
---       typescriptreact = 'prettier',
---       markdown = 'prettier',
---       ruby = 'rubocop',
---     }
---   }
--- }
-
+--
 -- nvim_lsp.efm.setup {
 --   filetypes = {"elixir", "eelixir", "heex", "surface"}
 -- }
 local lspconfig = {}
 
 function lspconfig.config()
-  if not require("inkatze.plugins.packer").is_installed("lspkind.nvim") then
-    return nil
+  require("inkatze.lspconfig.lua").setup()
+
+  local packer = require("inkatze.plugins.packer")
+
+  if packer.is_installed("which-key.nvim") then
+    local wk = require("which-key")
+
+    wk.register({
+      l = {
+        name = "LSP commands",
+        f = { vim.lsp.buf.format, "Run code formatter" },
+        g = {
+          name = "Go to definitions",
+          d = { vim.lsp.buf.definition, "LSP go to definition" },
+          D = { vim.lsp.buf.declaration, "LSP go to declaration" },
+        },
+      },
+    }, { prefix = "<leader>", silent = true, nnoremap = true })
   end
 
-  require("lspkind").init({
-    -- defines how annotations are shown
-    -- default: symbol
-    -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-    mode = "symbol_text",
+  if packer.is_installed("lspkind.nvim") then
+    require("lspkind").init({
+      -- defines how annotations are shown
+      -- default: symbol
+      -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+      mode = "symbol_text",
 
-    -- default symbol map
-    -- can be either 'default' (requires nerd-fonts font) or
-    -- 'codicons' for codicon preset (requires vscode-codicons font)
-    --
-    -- default: 'default'
-    preset = "codicons",
+      -- default symbol map
+      -- can be either 'default' (requires nerd-fonts font) or
+      -- 'codicons' for codicon preset (requires vscode-codicons font)
+      --
+      -- default: 'default'
+      preset = "codicons",
 
-    -- override preset symbols
-    --
-    -- default: {}
-    symbol_map = {
-      Text = "",
-      Method = "",
-      Function = "",
-      Constructor = "",
-      Field = "ﰠ",
-      Variable = "",
-      Class = "ﴯ",
-      Interface = "",
-      Module = "",
-      Property = "ﰠ",
-      Unit = "",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "﬌",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
-      TypeParameter = "",
-    },
-  })
+      -- override preset symbols
+      --
+      -- default: {}
+      symbol_map = {
+        Text = "",
+        Method = "",
+        Function = "",
+        Constructor = "",
+        Field = "ﰠ",
+        Variable = "",
+        Class = "ﴯ",
+        Interface = "",
+        Module = "",
+        Property = "ﰠ",
+        Unit = "",
+        Value = "",
+        Enum = "",
+        Keyword = "",
+        Snippet = "﬌",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "פּ",
+        Event = "",
+        Operator = "",
+        TypeParameter = "",
+      },
+    })
+  end
 end
 
 return lspconfig
