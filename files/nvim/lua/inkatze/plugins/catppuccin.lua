@@ -38,15 +38,16 @@ function catppuccin.config()
         enabled = true,
         colored_indent_levels = true,
       },
+      nvimtree = {
+        enabled = true,
+        show_root = false,
+        transparent_panel = false,
+      },
       gitsigns = true,
       lsp_trouble = false,
       lsp_saga = false,
       gitgutter = false,
-      nvimtree = {
-        enabled = false,
-        show_root = false,
-        transparent_panel = false,
-      },
+
       dashboard = false,
       neogit = false,
       vim_sneak = false,

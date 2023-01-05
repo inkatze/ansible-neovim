@@ -114,6 +114,15 @@ function packer.start()
         end,
       })
 
+      use({
+        "nvim-tree/nvim-tree.lua",
+        requires = {
+          "nvim-tree/nvim-web-devicons", -- optional, for file icons
+        },
+        tag = "nightly", -- optional, updated every week. (see issue #1193)
+        config = require("inkatze.plugins.nvim-tree").config,
+      })
+
       if packer_bootstrap then
         require("packer").sync()
       end
