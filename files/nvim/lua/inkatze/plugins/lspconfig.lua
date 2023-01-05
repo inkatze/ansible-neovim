@@ -190,11 +190,11 @@ function lspconfig.config()
       Interface = "",
       Module = "",
       Property = "ﰠ",
-      Unit = "塞",
+      Unit = "",
       Value = "",
       Enum = "",
       Keyword = "",
-      Snippet = "",
+      Snippet = "﬌",
       Color = "",
       File = "",
       Reference = "",
@@ -204,7 +204,7 @@ function lspconfig.config()
       Struct = "פּ",
       Event = "",
       Operator = "",
-      TypeParameter = "",
+      TypeParameter = "",
     },
   })
 end

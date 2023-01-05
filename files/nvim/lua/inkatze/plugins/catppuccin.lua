@@ -34,18 +34,18 @@ function catppuccin.config()
       fidget = true,
       which_key = true,
       cmp = true,
+      indent_blankline = {
+        enabled = true,
+        colored_indent_levels = true,
+      },
+      gitsigns = true,
       lsp_trouble = false,
       lsp_saga = false,
       gitgutter = false,
-      gitsigns = false,
       nvimtree = {
         enabled = false,
         show_root = false,
         transparent_panel = false,
-      },
-      indent_blankline = {
-        enabled = true,
-        colored_indent_levels = true,
       },
       dashboard = false,
       neogit = false,

@@ -101,6 +101,19 @@ function packer.start()
         "j-hui/fidget.nvim",
         config = require("inkatze.plugins.fidget").config,
       })
+
+      use({
+        "lewis6991/gitsigns.nvim",
+        config = require("inkatze.plugins.gitsigns").config,
+      })
+
+      use({
+        "windwp/nvim-autopairs",
+        config = function()
+          require("nvim-autopairs").setup({})
+        end,
+      })
+
       if packer_bootstrap then
         require("packer").sync()
       end
