@@ -87,6 +87,11 @@ function w.config()
     ["<s-left>"] = { "<cmd>BufferPrevious<cr>", "Previous buffer", opts },
     ["<s-right>"] = { "<cmd>BufferNext<cr>", "Next buffer", opts },
   })
+
+  wk.register({
+    name = "Search",
+    hl = { "<cmd>nohl<cr>", "Disable highlighting", opts },
+  }, { prefix = "<leader>" })
 end
 
 return w

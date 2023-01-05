@@ -97,6 +97,15 @@ function packer.start()
         "rcarriga/nvim-notify",
         config = require("inkatze.plugins.nvim-notify").config,
       })
+      -- Packer
+      use({
+        "folke/noice.nvim",
+        config = require("inkatze.plugins.noice").config,
+        requires = {
+          "MunifTanjim/nui.nvim",
+          "rcarriga/nvim-notify",
+        },
+      })
       use({
         "j-hui/fidget.nvim",
         config = require("inkatze.plugins.fidget").config,

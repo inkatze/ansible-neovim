@@ -43,9 +43,13 @@ function catppuccin.config()
         show_root = false,
         transparent_panel = false,
       },
+      dap = {
+        enabled = true,
+        enable_ui = true,
+      },
       gitsigns = true,
-      lsp_trouble = false,
-      lsp_saga = false,
+      lsp_trouble = true,
+      lsp_saga = true,
       gitgutter = false,
 
       dashboard = false,
@@ -57,10 +61,6 @@ function catppuccin.config()
       lightspeed = false,
       ts_rainbow = false,
       hop = false,
-      dap = {
-        enabled = false,
-        enable_ui = false,
-      },
     },
   })
 
