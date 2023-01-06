@@ -127,7 +127,7 @@ function packer.start()
       use({
         "nvim-tree/nvim-tree.lua",
         requires = {
-          "nvim-tree/nvim-web-devicons", -- optional, for file icons
+          "nvim-tree/nvim-web-devicons",
         },
         tag = "nightly", -- optional, updated every week. (see issue #1193)
         config = require("inkatze.plugins.nvim-tree").config,
@@ -143,6 +143,13 @@ function packer.start()
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = require("inkatze.plugins.lspsaga").config,
+      })
+
+      -- This one prevents the welcome screen from loading for some reason
+      use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = require("inkatze.plugins.lualine").config,
       })
 
       if packer_bootstrap then
