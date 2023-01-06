@@ -5,7 +5,7 @@ M.on_attach = function(_, bufnr)
   wk.register({
     l = {
       name = "LSP commands",
-      f = {vim.lsp.buf.format, "Run code formatter"},
+      f = { vim.lsp.buf.format, "Run code formatter" },
       g = {
         name = "Go to definitions",
         d = { vim.lsp.buf.definition, "LSP go to definition" },

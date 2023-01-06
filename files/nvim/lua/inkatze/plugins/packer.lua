@@ -147,7 +147,6 @@ M.start = function()
         requires = {
           {
             "catppuccin/nvim",
-            as = "catppuccin",
           },
           { "folke/which-key.nvim" },
         },
