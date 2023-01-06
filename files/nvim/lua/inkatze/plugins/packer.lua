@@ -97,7 +97,7 @@ M.start = function()
         "rcarriga/nvim-notify",
         config = require("inkatze.plugins.nvim-notify").config,
       })
-      -- Packer
+
       use({
         "folke/noice.nvim",
         config = require("inkatze.plugins.noice").config,

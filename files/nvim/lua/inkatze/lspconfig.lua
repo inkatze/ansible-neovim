@@ -32,4 +32,5 @@ M.on_attach = function(_, bufnr)
     },
   }, { prefix = "<leader>", silent = true, noremap = true, buffer = bufnr })
 end
+
 return M
