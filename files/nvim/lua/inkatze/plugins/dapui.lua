@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+M.config = function()
   require("dapui").setup()
 end
 

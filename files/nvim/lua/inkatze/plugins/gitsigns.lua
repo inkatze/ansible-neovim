@@ -1,10 +1,6 @@
 local M = {}
 
-function M.config()
-  if not require("inkatze.plugins.packer").is_installed("gitsigns.nvim") then
-    return nil
-  end
-
+M.config = function()
   require("gitsigns").setup({
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {

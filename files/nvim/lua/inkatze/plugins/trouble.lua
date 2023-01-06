@@ -1,10 +1,6 @@
 local M = {}
 
-function M.config()
-  if not require("inkatze.plugins.packer").is_installed("trouble.nvim") then
-    return nil
-  end
-
+M.config = function()
   require("trouble").setup({
     auto_close = true,
   })

@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+M.config = function()
   local elixir = require("elixir")
 
   ---@diagnostic disable-next-line: redundant-parameter

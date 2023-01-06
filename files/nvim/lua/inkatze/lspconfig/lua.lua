@@ -2,7 +2,7 @@ local M = {}
 
 local runtime_path = vim.split(package.path, ";")
 
-function M.setup()
+M.setup = function()
   require("lspconfig").sumneko_lua.setup({
     filetypes = { "lua" },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),

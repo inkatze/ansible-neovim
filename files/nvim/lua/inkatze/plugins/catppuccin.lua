@@ -1,6 +1,6 @@
-local catppuccin = {}
+local M = {}
 
-function catppuccin.config()
+M.config = function()
   require("catppuccin").setup({
     dim_inactive = {
       enabled = true,
@@ -63,4 +63,4 @@ function catppuccin.config()
   vim.cmd.colorscheme("catppuccin")
 end
 
-return catppuccin
+return M

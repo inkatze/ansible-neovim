@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+M.setup = function()
   require("lspconfig").efm.setup({
     filetypes = { "elixir", "eelixir", "heex", "surface" },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),

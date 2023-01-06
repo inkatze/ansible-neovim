@@ -1,10 +1,6 @@
 local M = {}
 
-function M.config()
-  if not require("inkatze.plugins.packer").is_installed("lualine.nvim") then
-    return nil
-  end
-
+M.config = function()
   local lualine = require("lualine")
 
   lualine.setup({

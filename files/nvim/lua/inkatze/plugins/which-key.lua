@@ -1,10 +1,6 @@
-local w = {}
+local M = {}
 
-function w.config()
-  if not require("inkatze.plugins.packer").is_installed("which-key.nvim") then
-    return nil
-  end
-
+M.config = function()
   local wk = require("which-key")
 
   wk.setup({
@@ -94,4 +90,4 @@ function w.config()
   }, { prefix = "<leader>" })
 end
 
-return w
+return M

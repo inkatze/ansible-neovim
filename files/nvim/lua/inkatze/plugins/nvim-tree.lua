@@ -1,10 +1,6 @@
 local M = {}
 
-function M.config()
-  if not require("inkatze.plugins.packer").is_installed("nvim-tree.lua") then
-    return nil
-  end
-
+M.config = function()
   local ignore_list = { ".git", "node_modules/*", ".cache" }
   local tree = require("nvim-tree")
 
@@ -48,15 +44,9 @@ function M.config()
     ignore_buffer_on_setup = true,
   })
 
-  if not require("inkatze.plugins.packer").is_installed("which-key.nvim") then
-    return nil
-  end
-
-  local wk = require("which-key")
-  local opts = { noremap = true, silent = true }
-  wk.register({
+  require("which-key").register({
     name = "Nvim tree file explorer",
-    ["<c-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggles nvim-tree", opts },
+    ["<c-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggles nvim-tree", noremap = true, silent = true },
   })
 end
 

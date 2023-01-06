@@ -1,10 +1,6 @@
 local M = {}
 
-function M.config()
-  if not require("inkatze.plugins.packer").is_installed("noice.nvim") then
-    return nil
-  end
-
+M.config = function()
   require("noice").setup({
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**

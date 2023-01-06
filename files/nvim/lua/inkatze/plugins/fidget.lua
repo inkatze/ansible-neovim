@@ -1,10 +1,6 @@
-local fidget = {}
+local M = {}
 
-function fidget.config()
-  if not require("inkatze.plugins.packer").is_installed("fidget.nvim") then
-    return nil
-  end
-
+M.config = function()
   require("fidget").setup({
     window = {
       blend = 0,
@@ -12,4 +8,4 @@ function fidget.config()
   })
 end
 
-return fidget
+return M

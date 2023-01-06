@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+M.config = function()
   require("inkatze.lspconfig.lua").setup()
   require("inkatze.lspconfig.elixir").setup()
 

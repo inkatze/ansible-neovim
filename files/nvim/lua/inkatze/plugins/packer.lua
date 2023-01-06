@@ -1,4 +1,4 @@
-local packer = {}
+local M = {}
 
 local ensure_packer = function()
   local fn = vim.fn
@@ -11,15 +11,7 @@ local ensure_packer = function()
   return false
 end
 
-function packer.is_installed(plugin)
-  if packer_plugins[plugin] and packer_plugins[plugin].loaded then
-    return true
-  else
-    return false
-  end
-end
-
-function packer.start()
+M.start = function()
   local packer_bootstrap = ensure_packer()
 
   require("packer").startup({
@@ -41,7 +33,7 @@ function packer.start()
       use({
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        requires = { { "nvim-lua/plenary.nvim" } },
+        requires = { { "nvim-lua/plenary.nvim" }, { "folke/which-key.nvim" } },
         config = function()
           require("inkatze.plugins.telescope").config()
         end,
@@ -136,6 +128,7 @@ function packer.start()
         "nvim-tree/nvim-tree.lua",
         requires = {
           "nvim-tree/nvim-web-devicons",
+          { "folke/which-key.nvim" },
         },
         tag = "nightly", -- optional, updated every week. (see issue #1193)
         config = require("inkatze.plugins.nvim-tree").config,
@@ -151,6 +144,13 @@ function packer.start()
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = require("inkatze.plugins.lspsaga").config,
+        requires = {
+          {
+            "catppuccin/nvim",
+            as = "catppuccin",
+          },
+          { "folke/which-key.nvim" },
+        },
       })
 
       use({
@@ -193,4 +193,4 @@ function packer.start()
   })
 end
 
-return packer
+return M

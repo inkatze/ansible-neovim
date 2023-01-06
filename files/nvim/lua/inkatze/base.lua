@@ -26,3 +26,8 @@ vim.g.mapleader = ","
 -- Makes invisible chars visible
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.lua", "*.luau" },
+  callback = vim.lsp.buf.format,
+})

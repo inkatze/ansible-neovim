@@ -1,10 +1,6 @@
-local ibl = {}
+local M = {}
 
-function ibl.config()
-  if require("inkatze.plugins.packer").is_installed("indent-blankline.nvim") then
-    return nil
-  end
-
+M.config = function()
   require("indent_blankline").setup({
     space_char_blankline = " ",
     show_current_context = true,
@@ -12,4 +8,4 @@ function ibl.config()
   })
 end
 
-return ibl
+return M
