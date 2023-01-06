@@ -70,7 +70,11 @@ function packer.start()
       use({ -- neovim's lsp pre-configurations
         "neovim/nvim-lspconfig",
         config = require("inkatze.plugins.lspconfig").config,
-        run = "brew install lua-language-server",
+        run = "brew install lua-language-server efm-langserver",
+        requires = {
+          { "hrsh7th/cmp-nvim-lsp" },
+          { "folke/which-key.nvim" },
+        },
       })
 
       use({ -- Fancy symbol trees for syntax and others
@@ -107,6 +111,7 @@ function packer.start()
           "rcarriga/nvim-notify",
         },
       })
+
       use({
         "j-hui/fidget.nvim",
         config = require("inkatze.plugins.fidget").config,
@@ -145,11 +150,28 @@ function packer.start()
         config = require("inkatze.plugins.lspsaga").config,
       })
 
+      use({
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" },
+        config = require("inkatze.plugins.dapui").config,
+      })
+
+      use({
+        "mhanberg/elixir.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = require("inkatze.plugins.elixir").config,
+      })
+
       -- This one prevents the welcome screen from loading for some reason
       use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
         config = require("inkatze.plugins.lualine").config,
+      })
+
+      use({
+        "github/copilot.vim",
+        run = ":Copilot setup",
       })
 
       if packer_bootstrap then

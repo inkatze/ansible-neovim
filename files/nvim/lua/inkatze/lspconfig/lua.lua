@@ -2,7 +2,7 @@ local M = {}
 
 local runtime_path = vim.split(package.path, ";")
 
-local function load_lspconfig()
+function M.setup()
   require("lspconfig").sumneko_lua.setup({
     filetypes = { "lua" },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -29,14 +29,6 @@ local function load_lspconfig()
       },
     },
   })
-end
-
-function M.setup()
-  local packer = require("inkatze.plugins.packer")
-
-  if packer.is_installed("nvim-lspconfig") and packer.is_installed("cmp-nvim-lsp") then
-    load_lspconfig()
-  end
 end
 
 return M

@@ -1,10 +1,6 @@
 local catppuccin = {}
 
 function catppuccin.config()
-  if not require("inkatze.plugins.packer").is_installed("catppuccin") then
-    return nil
-  end
-
   require("catppuccin").setup({
     dim_inactive = {
       enabled = true,

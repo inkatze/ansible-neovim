@@ -46,13 +46,11 @@
 --   }
 -- end
 --
--- nvim_lsp.efm.setup {
---   filetypes = {"elixir", "eelixir", "heex", "surface"}
--- }
 local lspconfig = {}
 
 function lspconfig.config()
   require("inkatze.lspconfig.lua").setup()
+  require("inkatze.lspconfig.elixir").setup()
 
   local packer = require("inkatze.plugins.packer")
 
