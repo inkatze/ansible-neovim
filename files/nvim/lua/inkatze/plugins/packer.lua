@@ -58,6 +58,8 @@ function packer.start()
           { "onsails/lspkind.nvim" },
           { "hrsh7th/cmp-vsnip" },
           { "hrsh7th/vim-vsnip" },
+          { "windwp/nvim-autopairs" },
+          { "folke/which-key.nvim" },
         },
         config = require("inkatze.plugins.nvim-cmp").config,
       })
@@ -74,6 +76,7 @@ function packer.start()
         requires = {
           { "hrsh7th/cmp-nvim-lsp" },
           { "folke/which-key.nvim" },
+          { "onsails/lspkind.nvim" },
         },
       })
 
@@ -158,7 +161,7 @@ function packer.start()
 
       use({
         "mhanberg/elixir.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
+        requires = { "nvim-lua/plenary.nvim", { "hrsh7th/cmp-nvim-lsp" } },
         config = require("inkatze.plugins.elixir").config,
       })
 

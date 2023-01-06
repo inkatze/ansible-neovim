@@ -3,6 +3,7 @@ local M = {}
 function M.config()
   local elixir = require("elixir")
 
+  ---@diagnostic disable-next-line: redundant-parameter
   elixir.setup({
     settings = elixir.settings({
       dialyzerEnabled = true,

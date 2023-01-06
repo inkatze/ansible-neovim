@@ -1,6 +1,6 @@
-local telescope = {}
+local M = {}
 
-function telescope.mappings()
+M.mappings = function()
   if not require("inkatze.plugins.packer").is_installed("which-key.nvim") then
     return nil
   end
@@ -29,7 +29,7 @@ function telescope.mappings()
   }, { prefix = "<leader>" })
 end
 
-function telescope.config()
+function M.config()
   if not require("inkatze.plugins.packer").is_installed("telescope.nvim") then
     return nil
   end
@@ -43,7 +43,7 @@ function telescope.config()
     },
   })
 
-  telescope.mappings()
+  M.mappings()
 end
 
-return telescope
+return M

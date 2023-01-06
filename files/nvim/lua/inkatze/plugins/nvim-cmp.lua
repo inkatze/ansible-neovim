@@ -10,15 +10,6 @@ local has_words_before = function()
 end
 
 function c.config()
-  local packer = require("inkatze.plugins.packer")
-  if not packer.is_installed("nvim-cmp") or not packer.is_installed("lspkind.nvim") then
-    return nil
-  end
-
-  if not require("inkatze.plugins.packer").is_installed("nvim-autopairs") then
-    return nil
-  end
-
   local cmp = require("cmp")
 
   cmp.setup({
@@ -71,9 +62,6 @@ function c.config()
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "vsnip" }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = "buffer" },
     }),
