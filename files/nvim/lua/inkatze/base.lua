@@ -27,7 +27,8 @@ vim.g.mapleader = ","
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 
+-- Autoformat on save for the given file patterns
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.lua", "*.luau" },
+  pattern = { "*.lua", "*.luau", "*.ex", "*.exs" },
   callback = vim.lsp.buf.format,
 })
