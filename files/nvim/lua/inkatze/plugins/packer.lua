@@ -123,12 +123,13 @@ M.start = function()
       use({
         "mhanberg/elixir.nvim",
         config = require("inkatze.plugins.elixir").config,
+        ft = { "elixir", "eelixir", "heex", "surface" },
       })
 
-      -- This one prevents the welcome screen from loading for some reason
       use({
         "nvim-lualine/lualine.nvim",
         config = require("inkatze.plugins.lualine").config,
+        event = "BufAdd",
       })
 
       use({
