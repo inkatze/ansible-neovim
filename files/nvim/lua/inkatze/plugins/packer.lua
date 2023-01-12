@@ -13,19 +13,29 @@ end
 
 M.start = function()
   local packer_bootstrap = ensure_packer()
-
   require("packer").startup({
     function(use)
+      -- No config and support plugins
       use("wbthomason/packer.nvim")
+      use("kyazdani42/nvim-web-devicons")
+      use("romgrk/barbar.nvim")
+      use("nvim-lua/plenary.nvim")
+      use("tpope/vim-commentary")
+      use("onsails/lspkind.nvim")
+      use("mfussenegger/nvim-dap")
+
+      -- Completion related plugins
+      use("hrsh7th/cmp-nvim-lsp")
+      use("hrsh7th/cmp-buffer")
+      use("hrsh7th/cmp-path")
+      use("hrsh7th/cmp-cmdline")
+      use("hrsh7th/cmp-vsnip")
+      use("hrsh7th/vim-vsnip")
+
       use({
         "catppuccin/nvim",
         as = "catppuccin",
         config = require("inkatze.plugins.catppuccin").config,
-      })
-
-      use({
-        "romgrk/barbar.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
       })
 
       use({ "lukas-reineke/indent-blankline.nvim", config = require("inkatze.plugins.indent-blankline").cofig })
@@ -33,7 +43,6 @@ M.start = function()
       use({
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        requires = { { "nvim-lua/plenary.nvim" }, { "folke/which-key.nvim" } },
         config = function()
           require("inkatze.plugins.telescope").config()
         end,
@@ -41,18 +50,7 @@ M.start = function()
 
       use({
         "hrsh7th/nvim-cmp",
-        requires = {
-          { "hrsh7th/cmp-nvim-lsp" },
-          { "hrsh7th/cmp-buffer" },
-          { "hrsh7th/cmp-path" },
-          { "hrsh7th/cmp-cmdline" },
-          { "neovim/nvim-lspconfig" },
-          { "onsails/lspkind.nvim" },
-          { "hrsh7th/cmp-vsnip" },
-          { "hrsh7th/vim-vsnip" },
-          { "windwp/nvim-autopairs" },
-          { "folke/which-key.nvim" },
-        },
+        requires = {},
         config = require("inkatze.plugins.nvim-cmp").config,
       })
 
@@ -65,11 +63,6 @@ M.start = function()
         "neovim/nvim-lspconfig",
         config = require("inkatze.plugins.lspconfig").config,
         run = "brew install lua-language-server efm-langserver",
-        requires = {
-          { "hrsh7th/cmp-nvim-lsp" },
-          { "folke/which-key.nvim" },
-          { "onsails/lspkind.nvim" },
-        },
       })
 
       use({ -- Fancy symbol trees for syntax and others
@@ -84,27 +77,8 @@ M.start = function()
 
       use({
         "jose-elias-alvarez/null-ls.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } },
         run = "brew install stylua",
         config = require("inkatze.plugins.null-ls").config,
-      })
-
-      use({ -- Use correct comment token
-        "tpope/vim-commentary",
-      })
-
-      use({
-        "rcarriga/nvim-notify",
-        config = require("inkatze.plugins.nvim-notify").config,
-      })
-
-      use({
-        "folke/noice.nvim",
-        config = require("inkatze.plugins.noice").config,
-        requires = {
-          "MunifTanjim/nui.nvim",
-          "rcarriga/nvim-notify",
-        },
       })
 
       use({
@@ -126,17 +100,12 @@ M.start = function()
 
       use({
         "nvim-tree/nvim-tree.lua",
-        requires = {
-          "nvim-tree/nvim-web-devicons",
-          { "folke/which-key.nvim" },
-        },
         tag = "nightly", -- optional, updated every week. (see issue #1193)
         config = require("inkatze.plugins.nvim-tree").config,
       })
 
       use({
         "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
         config = require("inkatze.plugins.trouble").config,
       })
 
@@ -144,30 +113,21 @@ M.start = function()
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = require("inkatze.plugins.lspsaga").config,
-        requires = {
-          {
-            "catppuccin/nvim",
-          },
-          { "folke/which-key.nvim" },
-        },
       })
 
       use({
         "rcarriga/nvim-dap-ui",
-        requires = { "mfussenegger/nvim-dap" },
         config = require("inkatze.plugins.dapui").config,
       })
 
       use({
         "mhanberg/elixir.nvim",
-        requires = { "nvim-lua/plenary.nvim", { "hrsh7th/cmp-nvim-lsp" } },
         config = require("inkatze.plugins.elixir").config,
       })
 
       -- This one prevents the welcome screen from loading for some reason
       use({
         "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
         config = require("inkatze.plugins.lualine").config,
       })
 
@@ -175,6 +135,13 @@ M.start = function()
         "github/copilot.vim",
         run = ":Copilot setup",
       })
+
+      use({
+        "mfussenegger/nvim-jdtls",
+        run = "./scripts/link_mac.sh && mvn package -DskipTests",
+      })
+
+      use({ "tpope/vim-projectionist" })
 
       if packer_bootstrap then
         require("packer").sync()
