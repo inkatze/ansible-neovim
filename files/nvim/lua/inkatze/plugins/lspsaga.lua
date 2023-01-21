@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
   local saga = require("lspsaga")
 
-  saga.init_lsp_saga({
+  saga.setup({
     custom_kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
   })
 

@@ -112,6 +112,7 @@ M.start = function()
       use({
         "glepnir/lspsaga.nvim",
         branch = "main",
+        event = "BufRead",
         config = require("inkatze.plugins.lspsaga").config,
       })
 
