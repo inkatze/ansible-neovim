@@ -161,6 +161,7 @@ config.settings.java = {
 }
 
 config.init_options.extendedClientCapabilities = jdtls.extendedClientCapabilities
+config.init_options.extendedClientCapabilities["progressReportProvider"] = false
 config.init_options.bundles = {
   vim.fn.glob(
     home .. "/dev/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.42.0.jar",
