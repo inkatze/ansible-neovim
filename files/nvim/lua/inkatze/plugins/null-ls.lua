@@ -6,7 +6,9 @@ M.config = function()
   null_ls.setup({
     sources = {
       null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.prettierd,
     },
+    on_attach = require("inkatze.lspconfig").on_attach,
   })
 end
 

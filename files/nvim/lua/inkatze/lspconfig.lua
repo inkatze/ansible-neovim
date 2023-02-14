@@ -1,6 +1,15 @@
 local M = {}
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
+  if client.server_capabilities.document_formatting then
+    -- Autoformat on save for the given file patterns
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
+
   local wk = require("which-key")
   wk.register({
     l = {

@@ -3,7 +3,7 @@ local M = {}
 local runtime_path = vim.split(package.path, ";")
 
 M.setup = function()
-  require("lspconfig").sumneko_lua.setup({
+  require("lspconfig").lua_ls.setup({
     filetypes = { "lua" },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = require("inkatze.lspconfig").on_attach,

@@ -5,6 +5,7 @@ M.config = function()
 
   saga.setup({
     custom_kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+    request_timeout = 10000,
   })
 
   local jump_to_prev_error = function()

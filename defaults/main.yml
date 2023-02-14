@@ -6,6 +6,7 @@ neovim_formulas:
   - neovim
   - pyenv
   - rbenv
+  - fsouza/prettierd/prettierd
 
 neovim_node_lsps:
   - typescript

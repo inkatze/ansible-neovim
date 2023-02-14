@@ -26,9 +26,3 @@ vim.g.mapleader = ","
 -- Makes invisible chars visible
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
-
--- Autoformat on save for the given file patterns
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.lua", "*.luau", "*.ex", "*.exs" },
-  callback = function() vim.lsp.buf.format() end,
-})
