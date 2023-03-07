@@ -26,7 +26,7 @@ local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(
 local runtimes = {
   {
     name = "JavaSE-11",
-    path = home .. "/.sdkman/candidates/java/11.0.17-amzn/",
+    path = home .. "/.sdkman/candidates/java/11.0.18-librca/",
   },
   {
     name = "JavaSE-17",
@@ -56,12 +56,12 @@ local function on_attach(client, bufnr, _)
 
   vim.cmd("augroup lsp_aucmds")
   vim.cmd(string.format("au! * <buffer=%d>", bufnr))
-  if client.resolved_capabilities["document_highlight"] then
+  if client.server_capabilities["document_highlight"] then
     vim.cmd(string.format("au CursorHold  <buffer=%d> lua vim.lsp.buf.document_highlight()", bufnr))
     vim.cmd(string.format("au CursorHoldI <buffer=%d> lua vim.lsp.buf.document_highlight()", bufnr))
     vim.cmd(string.format("au CursorMoved <buffer=%d> lua vim.lsp.buf.clear_references()", bufnr))
   end
-  if vim.lsp.codelens and client.resolved_capabilities["code_lens"] then
+  if vim.lsp.codelens and client.server_capabilities["code_lens"] then
     api.nvim_buf_set_keymap(bufnr, "n", "<leader>cr", "<Cmd>lua vim.lsp.codelens.refresh()<CR>", opts)
     api.nvim_buf_set_keymap(bufnr, "n", "<leader>ce", "<Cmd>lua vim.lsp.codelens.run()<CR>", opts)
   end
@@ -184,7 +184,7 @@ config.cmd = {
   "-jar",
   vim.fn.glob(
     home
-    .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
+      .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
   ),
   "-configuration",
   home .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac",

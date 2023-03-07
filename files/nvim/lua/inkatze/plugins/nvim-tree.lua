@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  local ignore_list = { ".git", "node_modules/*", ".cache" }
+  local ignore_list = { ".git/*", "node_modules/*", ".cache" }
   local tree = require("nvim-tree")
 
   tree.setup({
@@ -46,7 +46,7 @@ M.config = function()
 
   require("which-key").register({
     name = "Nvim tree file explorer",
-    ["<c-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggles nvim-tree", noremap = true, silent = true },
+        ["<c-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggles nvim-tree", noremap = true, silent = true },
   })
 end
 

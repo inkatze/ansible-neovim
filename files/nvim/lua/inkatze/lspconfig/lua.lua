@@ -6,7 +6,12 @@ M.setup = function()
   require("lspconfig").lua_ls.setup({
     filetypes = { "lua" },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    on_attach = require("inkatze.lspconfig").on_attach,
+    on_attach = function(client, bufnr)
+      require("inkatze.lspconfig").on_attach(client, bufnr)
+      -- Lets null-ls and stylua take care of formatting
+      client.server_capabilities.document_formatting = false
+      client.server_capabilities.document_range_formatting = false
+    end,
     settings = {
       Lua = {
         runtime = {

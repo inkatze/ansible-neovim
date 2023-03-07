@@ -9,6 +9,7 @@ M.config = function()
       null_ls.builtins.formatting.prettierd,
     },
     on_attach = require("inkatze.lspconfig").on_attach,
+    debug = true
   })
 end
 
