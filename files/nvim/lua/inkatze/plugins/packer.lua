@@ -59,13 +59,15 @@ M.start = function()
         config = require("inkatze.plugins.which-key").config,
       })
 
-      use({ -- neovim's lsp pre-configurations
+      use({
+            -- neovim's lsp pre-configurations
         "neovim/nvim-lspconfig",
         config = require("inkatze.plugins.lspconfig").config,
         run = "brew install lua-language-server efm-langserver",
       })
 
-      use({ -- Fancy symbol trees for syntax and others
+      use({
+            -- Fancy symbol trees for syntax and others
         "nvim-treesitter/nvim-treesitter",
         config = require("inkatze.plugins.nvim-treesitter").config,
         run = function()

@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  local ignore_list = { ".git/*", "node_modules/*", ".cache" }
+  local ignore_list = { ".git$", "node_modules$", ".cache" }
   local tree = require("nvim-tree")
 
   tree.setup({
@@ -41,7 +41,6 @@ M.config = function()
     filters = {
       custom = ignore_list,
     },
-    ignore_buffer_on_setup = true,
   })
 
   require("which-key").register({
