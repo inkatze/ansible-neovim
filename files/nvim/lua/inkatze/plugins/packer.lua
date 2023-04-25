@@ -60,14 +60,14 @@ M.start = function()
       })
 
       use({
-            -- neovim's lsp pre-configurations
+        -- neovim's lsp pre-configurations
         "neovim/nvim-lspconfig",
         config = require("inkatze.plugins.lspconfig").config,
         run = "brew install lua-language-server efm-langserver",
       })
 
       use({
-            -- Fancy symbol trees for syntax and others
+        -- Fancy symbol trees for syntax and others
         "nvim-treesitter/nvim-treesitter",
         config = require("inkatze.plugins.nvim-treesitter").config,
         run = function()
@@ -124,7 +124,7 @@ M.start = function()
       })
 
       use({
-        "mhanberg/elixir.nvim",
+        "elixir-tools/elixir-tools.nvim",
         config = require("inkatze.plugins.elixir").config,
         ft = { "elixir", "eelixir", "heex", "surface" },
       })

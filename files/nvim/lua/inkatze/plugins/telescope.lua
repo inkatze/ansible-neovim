@@ -37,7 +37,7 @@ M.config = function()
   t.setup({
     defaults = {
       layout_strategy = "horizontal",
-      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/" },
+      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "assets/vendor/" },
     },
   })
 

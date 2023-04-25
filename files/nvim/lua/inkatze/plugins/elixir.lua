@@ -2,15 +2,23 @@ local M = {}
 
 M.config = function()
   local elixir = require("elixir")
+  local elixirls = require("elixir.elixirls")
 
   ---@diagnostic disable-next-line: redundant-parameter
   elixir.setup({
-    settings = elixir.settings({
-      dialyzerEnabled = true,
-      fetchDeps = true,
-      enableTestLenses = true,
-      suggestSpecs = true,
-    }),
+    credo = {
+      enabled = true,
+      on_attach = require("inkatze.lspconfig").on_attach,
+    },
+    elixirls = {
+      enabled = true,
+      settings = elixirls.settings({
+        dialyzerEnabled = true,
+        fetchDeps = true,
+        enableTestLenses = true,
+        suggestSpecs = true,
+      }),
+    },
     on_attach = require("inkatze.lspconfig").on_attach,
     -- function(_, _)
     -- local map_opts = { buffer = true, noremap = true }

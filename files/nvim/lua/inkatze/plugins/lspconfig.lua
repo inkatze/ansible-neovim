@@ -2,7 +2,6 @@ local M = {}
 
 M.config = function()
   require("inkatze.lspconfig.lua").setup()
-  require("inkatze.lspconfig.elixir").setup()
 
   local wk = require("which-key")
   wk.register({
@@ -20,14 +19,12 @@ M.config = function()
     -- default: symbol
     -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
     mode = "symbol_text",
-
     -- default symbol map
     -- can be either 'default' (requires nerd-fonts font) or
     -- 'codicons' for codicon preset (requires vscode-codicons font)
     --
     -- default: 'default'
     preset = "codicons",
-
     -- override preset symbols
     --
     -- default: {}
