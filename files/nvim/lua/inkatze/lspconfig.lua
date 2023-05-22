@@ -2,7 +2,7 @@ local M = {}
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_client, bufnr)
   -- Autoformat on save for the given file patterns
   -- TODO: Conditional not working for some reason
   -- if client.server_capabilities.formatProvider then

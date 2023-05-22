@@ -3,6 +3,7 @@
 
 neovim_formulas:
   - ansible-lint
+  - lua-language-server
   - neovim
   - pyenv
   - rbenv
@@ -23,7 +24,7 @@ neovim_node_lsps:
   - pyright
   - intelephense
   - rome
-  - '@angular/language-server'
+  - "@angular/language-server"
   - prettier
   - eslint_d
 

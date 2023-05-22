@@ -23,6 +23,7 @@
     - neovim
     - bundler
     - rubocop
+    - ruby-lsp
 
 - name: Rehashing environments
   command: rbenv rehash

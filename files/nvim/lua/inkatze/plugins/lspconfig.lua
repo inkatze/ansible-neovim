@@ -2,6 +2,7 @@ local M = {}
 
 M.config = function()
   require("inkatze.lspconfig.lua").setup()
+  require("inkatze.lspconfig.ruby").setup()
 
   local wk = require("which-key")
   wk.register({
@@ -29,31 +30,31 @@ M.config = function()
     --
     -- default: {}
     symbol_map = {
-      Text = "",
-      Method = "",
-      Function = "",
+      Text = "󰊄",
+      Method = "",
+      Function = "󰊕",
       Constructor = "",
-      Field = "ﰠ",
+      Field = "",
       Variable = "",
-      Class = "ﴯ",
-      Interface = "",
-      Module = "",
-      Property = "ﰠ",
+      Class = "",
+      Interface = "",
+      Module = "󰕳",
+      Property = "",
       Unit = "",
       Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "﬌",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
-      TypeParameter = "",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "",
+      Event = "",
+      Operator = "",
+      TypeParameter = "",
     },
   })
 end

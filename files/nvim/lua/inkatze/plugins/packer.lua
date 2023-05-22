@@ -31,6 +31,7 @@ M.start = function()
       use("hrsh7th/cmp-cmdline")
       use("hrsh7th/cmp-vsnip")
       use("hrsh7th/vim-vsnip")
+      use({ "mtoohey31/cmp-fish", ft = "fish" })
 
       use({
         "catppuccin/nvim",
