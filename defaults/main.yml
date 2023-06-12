@@ -7,7 +7,6 @@ neovim_formulas:
   - neovim
   - pyenv
   - rbenv
-  - fsouza/prettierd/prettierd
 
 neovim_node_lsps:
   - typescript
@@ -26,6 +25,7 @@ neovim_node_lsps:
   - rome
   - "@angular/language-server"
   - prettier
+  - "@fsouza/prettierd"
   - eslint_d
 
 neovim_config_path: "{{ ansible_env.HOME }}/dev/ansible-neovim/files/nvim"
