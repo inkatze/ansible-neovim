@@ -26,15 +26,11 @@ local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(
 local runtimes = {
   {
     name = "JavaSE-11",
-    path = home .. "/.sdkman/candidates/java/11.0.18-librca/",
+    path = home .. "/.sdkman/candidates/java/11.0.19-zulu/",
   },
   {
     name = "JavaSE-17",
-    path = home .. "/.sdkman/candidates/java/17.0.4.1-tem/",
-  },
-  {
-    name = "JavaSE-1.8",
-    path = home .. "/.sdkman/candidates/java/8.0.352-zulu/",
+    path = home .. "/.sdkman/candidates/java/17.0.7-zulu/",
   },
 }
 
@@ -163,13 +159,13 @@ config.init_options.extendedClientCapabilities = jdtls.extendedClientCapabilitie
 config.init_options.extendedClientCapabilities["progressReportProvider"] = false
 config.init_options.bundles = {
   vim.fn.glob(
-    home .. "/dev/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.42.0.jar",
+    home .. "/dev/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.45.0.jar",
     1
   ),
 }
 
 config.cmd = {
-  home .. "/.sdkman/candidates/java/17.0.4.1-tem/bin/java",
+  home .. "/.sdkman/candidates/java/17.0.7-zulu/bin/java",
   "-Declipse.application=org.eclipse.jdt.ls.core.id1",
   "-Dosgi.bundles.defaultStartLevel=4",
   "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -184,7 +180,7 @@ config.cmd = {
   "-jar",
   vim.fn.glob(
     home
-      .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
+    .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
   ),
   "-configuration",
   home .. "/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac",
