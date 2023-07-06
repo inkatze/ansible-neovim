@@ -87,6 +87,7 @@ M.start = function()
       use({
         "j-hui/fidget.nvim",
         config = require("inkatze.plugins.fidget").config,
+        tag = "legacy",
       })
 
       use({
@@ -128,6 +129,8 @@ M.start = function()
         "elixir-tools/elixir-tools.nvim",
         config = require("inkatze.plugins.elixir").config,
         ft = { "elixir", "eelixir", "heex", "surface" },
+        tag = "stable",
+        requires = { "nvim-lua/plenary.nvim" },
       })
 
       use({
