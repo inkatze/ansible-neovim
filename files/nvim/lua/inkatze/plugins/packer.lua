@@ -114,8 +114,8 @@ M.start = function()
       })
 
       use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
+        "nvimdev/lspsaga.nvim",
+        after = "nvim-lspconfig",
         event = "BufRead",
         config = require("inkatze.plugins.lspsaga").config,
       })
