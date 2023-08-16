@@ -7,7 +7,7 @@ local mappings = function()
 
   wk.register({
     t = {
-      name = "Telescope actions", -- optional group name
+      name = "Telescope actions",                     -- optional group name
       b = { builtin.buffers, "Find buffers", opts },
       f = { builtin.find_files, "Find files", opts }, -- create a binding with label
       s = { builtin.live_grep, "Live grep", opts },
@@ -18,8 +18,8 @@ local mappings = function()
         br = { builtin.git_branches, "Git branches", opts },
         c = { builtin.git_commits, "Git commits", opts },
         f = { builtin.git_files, "Git files", opts },
-        st = { builtin.git_status, "Git status", opts },
-        sh = { builtin.git_stash, "Git stash", opts },
+        s = { builtin.git_status, "Git status", opts },
+        x = { builtin.git_stash, "Git stash", opts },
       },
     },
   }, { prefix = "<leader>" })
