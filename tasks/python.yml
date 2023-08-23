@@ -3,11 +3,15 @@
   command: pyenv root
   register: pyenv_root
   changed_when: false
+  tags:
+    - neovim
 
 - name: Checking Installed Python interpreters
   command: ls {{ pyenv_root.stdout }}/versions
   register: pyenv_versions
   changed_when: false
+  tags:
+    - neovim
 
 - name: Installing Python interpreters for neovim
   command: pyenv install {{ lookup('env', 'PYENV_VERSION') | default(neovim_python_version) }}
@@ -22,7 +26,11 @@
       - pyright
     executable: "{{ pyenv_root.stdout }}/versions/{{ lookup('env', 'PYENV_VERSION') | default(neovim_python_version) }}/bin/pip3"
     state: latest
+  tags:
+    - neovim
 
 - name: Rehashing environments
   command: pyenv rehash
   changed_when: false
+  tags:
+    - neovim
