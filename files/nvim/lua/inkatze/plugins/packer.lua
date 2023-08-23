@@ -158,6 +158,12 @@ M.start = function()
 
       use({ "tpope/vim-projectionist" })
 
+      use({
+        "nvim-neotest/neotest",
+        requires = { "olimorris/neotest-rspec", "jfpedroza/neotest-elixir", "haydenmeade/neotest-jest" },
+        config = require("inkatze.plugins.neotest").config,
+      })
+
       if packer_bootstrap then
         require("packer").sync()
       end
