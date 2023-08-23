@@ -23,6 +23,7 @@ M.start = function()
       use("tpope/vim-commentary")
       use("onsails/lspkind.nvim")
       use("mfussenegger/nvim-dap")
+      use("DanilaMihailov/beacon.nvim")
 
       -- Completion related plugins
       use("hrsh7th/cmp-nvim-lsp")
@@ -106,6 +107,11 @@ M.start = function()
         "nvim-tree/nvim-tree.lua",
         tag = "nightly", -- optional, updated every week. (see issue #1193)
         config = require("inkatze.plugins.nvim-tree").config,
+      })
+
+      use({
+        "Bekaboo/dropbar.nvim",
+        config = require("inkatze.plugins.dropbar").config,
       })
 
       use({

@@ -46,17 +46,11 @@ M.config = function()
       gitsigns = true,
       lsp_trouble = true,
       lsp_saga = true,
-      gitgutter = false,
-
-      dashboard = false,
-      neogit = false,
-      vim_sneak = false,
-      fern = false,
-      bufferline = false,
-      markdown = false,
-      lightspeed = false,
-      ts_rainbow = false,
-      hop = false,
+      dropbar = {
+        enabled = true,
+        color_mode = true,
+      },
+      beacon = true,
     },
   })
 

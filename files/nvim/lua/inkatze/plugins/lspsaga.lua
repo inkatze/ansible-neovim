@@ -7,6 +7,7 @@ M.config = function()
     ui = {
       kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
     },
+    symbol_in_winbar = { enable = false },
   })
 
   local jump_to_prev_error = function()

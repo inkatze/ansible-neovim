@@ -4,6 +4,9 @@ M.config = function()
   require("nvim-treesitter.configs").setup({
     ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = { "phpdoc" },
+    sync_install = false,
+    auto_install = true,
+    modules = {},
     highlight = {
       enable = true, -- false will disable the whole extension
       additional_vim_regex_highlighting = false,
