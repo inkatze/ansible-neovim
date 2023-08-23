@@ -51,6 +51,7 @@ M.config = function()
         color_mode = true,
       },
       beacon = true,
+      illuminate = true,
     },
   })
 
