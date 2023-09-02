@@ -1,10 +1,16 @@
 ---
+- name: Get fish directory
+  command: brew --prefix fish
+  register: fish_dir
+  changed_when: false
+  tags:
+    - neovim
 
 - name: Get current node version
   register: node_version
   shell:
     cmd: nvm current
-    executable: /opt/homebrew/bin/fish
+    executable: "{{ fish_dir.stdout }}/bin/fish"
   tags:
     - neovim
   changed_when: false
