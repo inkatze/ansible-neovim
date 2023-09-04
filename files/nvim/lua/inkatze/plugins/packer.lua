@@ -24,7 +24,6 @@ M.start = function()
       use("onsails/lspkind.nvim")
       use("mfussenegger/nvim-dap")
       use("DanilaMihailov/beacon.nvim")
-      use("RRethy/vim-illuminate")
 
       -- Completion related plugins
       use("hrsh7th/cmp-nvim-lsp")
