@@ -1,9 +1,7 @@
-local M = {}
-
-M.config = function()
-  local lualine = require("lualine")
-
-  lualine.setup({
+return {
+  "nvim-lualine/lualine.nvim",
+  event = "BufAdd",
+  opts = {
     options = {
       theme = "catppuccin",
     },
@@ -37,7 +35,5 @@ M.config = function()
     },
     tabline = {},
     extensions = { "quickfix", "nvim-tree" },
-  })
-end
-
-return M
+  },
+}
