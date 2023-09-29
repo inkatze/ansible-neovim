@@ -1,5 +1,3 @@
-local M = {}
-
 local mappings = function()
   local builtin = require("telescope.builtin")
   local opts = { noremap = true, silent = true }
@@ -31,17 +29,15 @@ local mappings = function()
   })
 end
 
-M.config = function()
-  local t = require("telescope")
-
-  t.setup({
+return {
+  "nvim-telescope/telescope.nvim",
+  branch = "0.1.x",
+  dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
+  opts = {
     defaults = {
       layout_strategy = "horizontal",
       file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "assets/vendor/" },
     },
-  })
-
-  mappings()
-end
-
-return M
+  },
+  config = mappings,
+}

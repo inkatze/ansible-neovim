@@ -40,7 +40,7 @@ M.start = function()
         config = require("inkatze.plugins.catppuccin").config,
       })
 
-      use({ "lukas-reineke/indent-blankline.nvim", config = require("inkatze.plugins.indent-blankline").cofig })
+      use({ "lukas-reineke/indent-blankline.nvim", config = require("inkatze.plugins.indent-blankline").config })
 
       use({
         "nvim-telescope/telescope.nvim",
