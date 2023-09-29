@@ -1,7 +1,7 @@
 return {
   "elixir-tools/elixir-tools.nvim",
   ft = { "elixir", "eelixir", "heex", "surface" },
-  version = "stable",
+  version = "*",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local elixir = require("elixir")

@@ -33,16 +33,11 @@ return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
-  config = function()
-    local t = require("telescope")
-
-    t.setup({
-      defaults = {
-        layout_strategy = "horizontal",
-        file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "assets/vendor/" },
-      },
-    })
-
-    mappings()
-  end,
+  opts = {
+    defaults = {
+      layout_strategy = "horizontal",
+      file_ignore_patterns = { "node%_modules/.*", "%.rbi", "log/.*", "tmp/.*", "ar%_doc/", "assets/vendor/" },
+    },
+  },
+  config = mappings,
 }
