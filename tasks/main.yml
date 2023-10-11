@@ -34,10 +34,10 @@
 - name: Installing neovim plugins
   shell: >
     nvim --headless
-    -c 'autocmd User PackerComplete quitall'
-    -c 'PackerSync'
+    -c 'Lazy! sync'
     -c 'TSInstall maintained'
-    -c 'TSUpdate' &> /dev/null < /dev/tty
+    -c 'TSUpdate'
+    -c 'qa' &> /dev/null < /dev/tty
   changed_when: false
   tags:
     - neovim

@@ -1,40 +1,11 @@
 ---
-- name: Storing rbenv root
-  command: rbenv root
-  register: rbenv_root
-  changed_when: false
-  tags:
-    - neovim
-
-- name: Checking installed ruby interpreters
-  command: ls {{ rbenv_root.stdout }}/versions
-  register: rbenv_versions
-  changed_when: false
-  tags:
-    - neovim
-
 - name: Installing Ruby interpreter for neovim
-  command: rbenv install {{ lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version) }}
-  when: not ((lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version)) in (rbenv_versions.stdout_lines | map('trim') | list))
-  tags:
-    - neovim
-
-- name: Installing Ruby's neovim gems
-  gem:
-    name: "{{ item }}"
-    state: latest
-    user_install: no
-    executable: "{{ rbenv_root.stdout }}/versions/{{ lookup('env', 'RBENV_VERSION') | default(neovim_ruby_version) }}/bin/gem"
-  with_items:
-    - neovim
-    - bundler
-    - rubocop
-    - ruby-lsp
+  command: asdf install ruby
   tags:
     - neovim
 
 - name: Rehashing environments
-  command: rbenv rehash
+  command: asdf reshim ruby
   changed_when: false
   tags:
     - neovim
