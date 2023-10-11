@@ -20,7 +20,7 @@
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "neotest": { "branch": "master", "commit": "1e67a504d03def3a6a1125d934cb511680f72555" },
   "neotest-elixir": { "branch": "master", "commit": "7904f8c0fedbe615ee3d75beb810d3e1426b05c6" },
-  "neotest-jest": { "branch": "main", "commit": "ae559fbd405084ee38dd711eede6d74f3dc1d463" },
+  "neotest-jest": { "branch": "main", "commit": "65ab61c77aa1c245f16982ffe1a4d31589e18023" },
   "neotest-rspec": { "branch": "main", "commit": "51a3b866d85733d2df2c6b5a16d75ce6ed2fbade" },
   "null-ls.nvim": { "branch": "main", "commit": "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7" },
   "nvim-autopairs": { "branch": "master", "commit": "748e72c05495a3d30e88a6ef04b21697019a9aa9" },
