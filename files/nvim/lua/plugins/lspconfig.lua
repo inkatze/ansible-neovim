@@ -1,11 +1,16 @@
 return {
   -- neovim's lsp pre-configurations
   "neovim/nvim-lspconfig",
-  dependencies = { "folke/which-key.nvim" },
+  dependencies = {
+    "folke/which-key.nvim",
+    { "onsails/lspkind.nvim", lazy = true },
+  },
   build = "brew install lua-language-server efm-langserver",
+  event = "BufAdd",
   config = function()
     require("inkatze.lspconfig.lua").setup()
     require("inkatze.lspconfig.ruby").setup()
+    require("inkatze.lspconfig.web").setup()
 
     local wk = require("which-key")
     wk.register({

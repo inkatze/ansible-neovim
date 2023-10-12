@@ -2,23 +2,10 @@ return {
   -- No config and support plugins
   { "kyazdani42/nvim-web-devicons", lazy = true },
   { "nvim-lua/plenary.nvim",        lazy = true },
-  "romgrk/barbar.nvim",
-  "tpope/vim-commentary",
-  "onsails/lspkind.nvim",
-  "mfussenegger/nvim-dap",
-  "DanilaMihailov/beacon.nvim",
+  { "romgrk/barbar.nvim",           event = "BufAdd" },
+  { "tpope/vim-commentary",         event = "ModeChanged" },
+  { "DanilaMihailov/beacon.nvim",   event = "BufAdd" },
 
-  -- Completion related plugins
-  { "hrsh7th/cmp-nvim-lsp", lazy = true },
-  { "hrsh7th/cmp-buffer",   lazy = true },
-  { "hrsh7th/cmp-path",     lazy = true },
-  { "hrsh7th/cmp-cmdline",  lazy = true },
-  { "hrsh7th/cmp-vsnip",    lazy = true },
-  { "hrsh7th/vim-vsnip",    lazy = true },
-  {
-    "mtoohey31/cmp-fish",
-    ft = "fish",
-  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -26,26 +13,31 @@ return {
   },
   {
     "folke/trouble.nvim",
+    event = "BufAdd",
     opts = {
       auto_close = true,
     },
   },
   {
-    "rcarriga/nvim-dap-ui",
-    opts = {},
+    "mfussenegger/nvim-dap",
+    event = "BufAdd",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      lazy = true,
+      opts = {},
+    }
   },
   {
     "github/copilot.vim",
+    event = "BufAdd",
     build = ":Copilot setup",
   },
   {
     "mfussenegger/nvim-jdtls",
+    ft = "java",
     build = "./scripts/link_mac.sh && mvn package -DskipTests",
   },
-  { "tpope/vim-projectionist" },
-  { "olimorris/neotest-rspec",  lazy = true },
-  { "jfpedroza/neotest-elixir", lazy = true },
-  { "haydenmeade/neotest-jest", lazy = true },
+  { "tpope/vim-projectionist", event = "BufAdd" },
   {
     "j-hui/fidget.nvim",
     version = "legacy",
@@ -68,6 +60,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+    event = "BufAdd",
     opts = { scope = { enabled = false } },
   },
 }

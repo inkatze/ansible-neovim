@@ -1,10 +1,11 @@
 return {
   "nvim-neotest/neotest",
+  ft = { "ruby", "elixir", "javascript", "javascriptreact", "typescript", "typescriptreact" },
   dependencies = {
-    "olimorris/neotest-rspec",
-    "jfpedroza/neotest-elixir",
-    "haydenmeade/neotest-jest",
-    "folke/which-key.nvim",
+    { "olimorris/neotest-rspec",  lazy = true },
+    { "jfpedroza/neotest-elixir", lazy = true },
+    { "haydenmeade/neotest-jest", lazy = true },
+    { "folke/which-key.nvim",     lazy = true },
   },
   config = function()
     require("neotest").setup({

@@ -10,12 +10,18 @@ end
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-vsnip",
-    "hrsh7th/vim-vsnip",
+    { "hrsh7th/cmp-nvim-lsp", lazy = true },
+    { "hrsh7th/cmp-buffer",   lazy = true },
+    { "hrsh7th/cmp-path",     lazy = true },
+    { "hrsh7th/cmp-cmdline",  lazy = true },
+    { "hrsh7th/cmp-vsnip",    lazy = true },
+    { "hrsh7th/vim-vsnip",    lazy = true },
+    {
+      "mtoohey31/cmp-fish",
+      ft = "fish",
+      lazy = true
+    },
+    { "onsails/lspkind.nvim", lazy = true },
   },
   config = function()
     local cmp = require("cmp")
