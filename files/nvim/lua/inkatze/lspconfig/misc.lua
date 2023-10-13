@@ -7,6 +7,7 @@ local servers = {
   "graphql",
   "pyright",
   "rome",
+  "stylelint-lsp",
   "tailwindcss",
   "tsserver",
   "vimls",
