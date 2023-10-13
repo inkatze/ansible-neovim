@@ -9,6 +9,7 @@ return {
   event = "BufAdd",
   config = function()
     require("inkatze.lspconfig.lua").setup()
+    require("inkatze.lspconfig.misc").setup()
     require("inkatze.lspconfig.ruby").setup()
     require("inkatze.lspconfig.web").setup()
 
