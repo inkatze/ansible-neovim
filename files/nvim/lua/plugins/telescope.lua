@@ -32,7 +32,7 @@ end
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-  dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
+  dependencies = { { "nvim-lua/plenary.nvim", lazy = true }, { "folke/which-key.nvim", lazy = true } },
   opts = {
     defaults = {
       layout_strategy = "horizontal",

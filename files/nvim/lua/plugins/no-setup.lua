@@ -3,7 +3,7 @@ return {
   { "kyazdani42/nvim-web-devicons", lazy = true },
   { "nvim-lua/plenary.nvim",        lazy = true },
   { "romgrk/barbar.nvim",           event = "BufAdd" },
-  { "tpope/vim-commentary",         event = "ModeChanged" },
+  { "tpope/vim-commentary",         event = "BufAdd" },
   { "DanilaMihailov/beacon.nvim",   event = "BufAdd" },
 
   {
